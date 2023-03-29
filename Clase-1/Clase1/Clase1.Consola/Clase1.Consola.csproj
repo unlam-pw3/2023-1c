@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Betalgo.OpenAI.GPT3" Version="6.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Clase1.Logica\Clase1.Logica.csproj" />
   </ItemGroup>
 
