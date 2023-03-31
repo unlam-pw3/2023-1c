@@ -8,4 +8,4 @@ using OpenAI.GPT3.ObjectModels.RequestModels;
 using Clase1.Logica.Ejercicios;
 
 //CalculadoraEjercicio.Ejecutar();
-await ChatGPTEjercicio.Ejecutar();
+BolaMagica.Ejecutar();
