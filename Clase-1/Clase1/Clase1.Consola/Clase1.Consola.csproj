@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Clase1.Logica\Clase1.Logica.csproj" />
+    <ProjectReference Include="..\Ejercicio01\Ejercicio01.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,11 @@ using OpenAI.GPT3;
 using OpenAI.GPT3.ObjectModels;
 using OpenAI.GPT3.ObjectModels.RequestModels;
 using Clase1.Logica.Ejercicios;
+using Ejercicio01;
 
-//CalculadoraEjercicio.Ejecutar();
-await ChatGPTEjercicio.Ejecutar();
+//Bola.init();
+Console.WriteLine("----------------");
+Console.WriteLine("Haga una pregunta: ");
+string pregunta = Console.ReadLine();
+string respuesta = Bola.preguntar(pregunta);
+Console.WriteLine(respuesta);
