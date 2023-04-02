@@ -31,8 +31,8 @@ public static class ChatGPTEjercicio
             {
                 ChatMessage.FromUser(Console.ReadLine()),
             },
-            Model = Models.Davinci,
-            MaxTokens = 50//optional
+            Model = Models.ChatGpt3_5Turbo,
+            //MaxTokens = 50//optional
         });
         if (completionResult.Successful)
         {
