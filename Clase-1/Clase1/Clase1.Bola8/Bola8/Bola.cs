@@ -22,7 +22,6 @@ public class Bola
         string question = Console.ReadLine();
         Boolean isNull = IsNull(question);
 
-        //SALE POR FALSO
         while (isNull)
         {
             Console.WriteLine("No ha preguntado nada aún, intente nuevamente.");
