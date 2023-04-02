@@ -86,7 +86,7 @@ public class Bola
     {
         if (c.Equals('x'))
         {
-            Console.Beep();
+            Environment.Exit(0);
         }
     }
 }
