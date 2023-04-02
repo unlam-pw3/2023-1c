@@ -9,4 +9,6 @@ using Clase1.Logica.Ejercicios;
 
 //CalculadoraEjercicio.Ejecutar();
 //await ChatGPTEjercicio.Ejecutar();
+
 Ball8Ejercicio.Ejecutar();
+
