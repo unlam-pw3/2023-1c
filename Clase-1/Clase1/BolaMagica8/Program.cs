@@ -14,9 +14,9 @@ string Respuesta()
 {
     string respuesta = "";
     Random rand = new Random();
-    int respuestaRandom = rand.Next(1,10);//devuelve un número aleatorio entre el rango de 2 números
+    int random = rand.Next(1,8);//devuelve un número aleatorio entre el rango de 2 números
 
-    switch (respuestaRandom)
+    switch (random)
     {
         case 1:
             respuesta = "Es cierto";
@@ -41,12 +41,6 @@ string Respuesta()
             break;
         case 8:
             respuesta = "No cuentes con ello";
-            break;
-        case 9:
-            respuesta = "Mi respuesta es no";
-            break;
-        case 10:
-            respuesta = "Muy dudoso";
             break;
     }
 
