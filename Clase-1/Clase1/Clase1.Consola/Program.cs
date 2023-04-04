@@ -2,4 +2,6 @@
 
 Bola bola = new Bola();
 
-bola.Agitar();
+bola.Agitar()
+
+//Console.WriteLine("Ingrese una pregunta y la bola le respondera");
