@@ -15,6 +15,14 @@ while (repeat)
     Console.WriteLine("----------------");
     Console.WriteLine("Haga una pregunta: ");
     string pregunta = Console.ReadLine();
-    string respuesta = Bola.preguntar(pregunta);
-    Console.WriteLine(respuesta);
+    if(pregunta != "")
+    {
+        string respuesta = Bola.preguntar(pregunta);
+        Console.WriteLine(respuesta);
+    }
+    else
+    {
+        Console.WriteLine("Debe hacer una pregunta!");
+        Console.WriteLine("VAMOS DE NUEVO!!");
+    }
 }
