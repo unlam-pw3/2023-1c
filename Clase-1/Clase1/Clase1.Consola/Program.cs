@@ -9,8 +9,12 @@ using Clase1.Logica.Ejercicios;
 using Ejercicio01;
 
 //Bola.init();
-Console.WriteLine("----------------");
-Console.WriteLine("Haga una pregunta: ");
-string pregunta = Console.ReadLine();
-string respuesta = Bola.preguntar(pregunta);
-Console.WriteLine(respuesta);
+bool repeat = true;
+while (repeat)
+{
+    Console.WriteLine("----------------");
+    Console.WriteLine("Haga una pregunta: ");
+    string pregunta = Console.ReadLine();
+    string respuesta = Bola.preguntar(pregunta);
+    Console.WriteLine(respuesta);
+}
