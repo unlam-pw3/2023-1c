@@ -7,18 +7,7 @@ namespace Ejercicio01
 
         private static ArrayList respuestas = new ArrayList();
 
-
-        public static string preguntar(string pregunta)
-        {
-            cargarRespuestas();
-
-            Random random = new Random();
-            int value = random.Next(0, respuestas.Count);
-            //return $"Su respuesta a la pregunta '{pregunta}' seria : {respuestas[value]}";
-            return $"RESPUESTA: {respuestas[value]}";
-        }
-
-        public static void cargarRespuestas()
+        static Bola()
         {
             respuestas.Add("Es cierto.");
             respuestas.Add("Es decididamente así.");
@@ -41,6 +30,14 @@ namespace Ejercicio01
             respuestas.Add("Las perspectivas no son muy buenas.");
             respuestas.Add("Muy dudoso.");
         }
-        
+
+
+        public static string preguntar(string pregunta)
+        {
+            Random random = new Random();
+            int value = random.Next(0, respuestas.Count);
+            //return $"Su respuesta a la pregunta '{pregunta}' seria : {respuestas[value]}";
+            return $"RESPUESTA: {respuestas[value]}";
+        }
     }
 }
