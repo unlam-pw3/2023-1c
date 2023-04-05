@@ -13,7 +13,7 @@ namespace Ejercicio01
             cargarRespuestas();
 
             Random random = new Random();
-            int value = random.Next(0, 19);
+            int value = random.Next(0, respuestas.Count);
             //return $"Su respuesta a la pregunta '{pregunta}' seria : {respuestas[value]}";
             return $"RESPUESTA: {respuestas[value]}";
         }
