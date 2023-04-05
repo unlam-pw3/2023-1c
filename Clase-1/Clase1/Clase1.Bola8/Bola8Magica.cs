@@ -22,7 +22,7 @@ public class Bola8Magica
         return this.posiblesRespuestas[index];
     }
 
-    public void agregarRespuesta(string newRespuesta)
+    public void AgregarRespuesta(string newRespuesta)
     {
         //en c# no se puede agregar directamente un nuevo elemento
         string[] newArray = new string[this.posiblesRespuestas.Length + 1];
@@ -35,7 +35,7 @@ public class Bola8Magica
         this.posiblesRespuestas = newArray;
     }
 
-    public void sacarRespuesta(string respuestaASacar)
+    public void SacarRespuesta(string respuestaASacar)
     {
         //nuevo array
         string[] newArray = new string[this.posiblesRespuestas.Length - 1];

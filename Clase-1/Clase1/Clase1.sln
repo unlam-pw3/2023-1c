@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clase1.Consola", "Clase1.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clase1.Logica", "Clase1.Logica\Clase1.Logica.csproj", "{AD7C1759-ED6C-4BB9-80D4-6D233FAE8702}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console.Bola8Magica", "clase1.Bola8Magica\Console.Bola8Magica.csproj", "{CC3255EE-29C2-42AC-A2AA-E55DDFC2F92B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clase1.Bola8Magica.Consola", "clase1.Bola8Magica\Clase1.Bola8Magica.Consola.csproj", "{CC3255EE-29C2-42AC-A2AA-E55DDFC2F92B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clase1.Bola8Magica", "Clase1.Bola8\Clase1.Bola8Magica.csproj", "{24BECF8B-9ED5-48EB-84F1-3721F7915DFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clase1.Bola8Magica", "Clase1.Bola8\Clase1.Bola8Magica.csproj", "{24BECF8B-9ED5-48EB-84F1-3721F7915DFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
