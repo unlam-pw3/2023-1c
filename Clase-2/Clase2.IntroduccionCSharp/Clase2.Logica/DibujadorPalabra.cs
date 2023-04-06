@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clase2.Logica
 {
-    internal class DibujadorPalabra
+    public class DibujadorPalabra
     {
         public void DibujarPalabra(string palabraElegida, List<string> letrasAdivinadas)
         {
@@ -28,7 +28,7 @@ namespace Clase2.Logica
                     palabraADibujar += "_ ";
                 }
             }
-            return palabraADibujar;
+            return palabraADibujar.Trim();
         }
 
     }
