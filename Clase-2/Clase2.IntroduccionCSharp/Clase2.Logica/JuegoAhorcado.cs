@@ -35,6 +35,7 @@
             //usuario ingresa una letra y se valida si pertenece a la palabra, si no pertenece se dibuja una parte del cuerpo del ahorcado
             do
             {
+                //dibujar como se encuentra la palabra ctual con las incognitas y las letras ya descubiertas
                 dibujadorPalabra.DibujarPalabra(palabraElegida, LetrasAdivinadas);
                 Console.WriteLine("Ingrese una letra");
                 string letraIngresada = Console.ReadLine();
@@ -47,7 +48,7 @@
                     {
                         Console.WriteLine("Ganaste!");
                         Console.WriteLine($"La palabra era {palabraElegida}");
-                        break;
+                        return;
                     }
                 }
                 else
@@ -57,8 +58,6 @@
                     dibujoAhorcado.DibujarAhorcado();
                     dibujoAhorcado.RestarIntento();
                 }
-                //dibujar como se encuentra la palabra ctual con las incognitas y las letras ya descubiertas
-                dibujadorPalabra.DibujarPalabra(palabraElegida, LetrasAdivinadas);
 
             } while (dibujoAhorcado.QuedanIntentos());
             Console.WriteLine("Has perdido. La palabra era: " + palabraElegida);
