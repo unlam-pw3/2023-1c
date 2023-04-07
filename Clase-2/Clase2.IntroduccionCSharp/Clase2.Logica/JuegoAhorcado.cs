@@ -5,13 +5,13 @@
         private static List<string> PalabrasNivelPrincipiante = new List<string>()
         {
             //Cosas que pueden estar en la cocina
-            "Perro",
+            "Mama",
             "Gato",
             "Auto",
             "Casa",
             "Vaso",
             "Mesa",
-            "Pasto",
+            "Papa",
         };
 
         private static List<string> PalabrasNivelAvanzado = new List<string>()
@@ -35,7 +35,17 @@
             var dibujadorPalabra = new DibujadorPalabra();
             Console.WriteLine("Ingrese 1 para nivel principante | 2 para nivel avanzado | 0 Para cerrar");
             string nivelIngresado = Console.ReadLine();
-            int nivelIngresadoInt = int.Parse(nivelIngresado);
+            int nivelIngresadoInt = 9;
+            int result;
+
+            if (int.TryParse(nivelIngresado, out result))
+            {
+                nivelIngresadoInt = int.Parse(nivelIngresado);
+            }
+            else
+            {
+                Console.WriteLine("Debe ingresar una opcion correcta");
+            }
             bool continuar = true;
 
             while (continuar)
@@ -58,8 +68,17 @@
                 else
                 {
                     Console.WriteLine("Ingrese 1 para nivel principante | 2 para nivel avanzado | 0 Para cerrar");
-                    nivelIngresado = Console.ReadLine();
-                    nivelIngresadoInt = int.Parse(nivelIngresado);
+                     nivelIngresado = Console.ReadLine();
+                     
+
+                    if (int.TryParse(nivelIngresado, out result))
+                    {
+                        nivelIngresadoInt = int.Parse(nivelIngresado);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Debe ingresar una opccion correcta");
+                    }                    
                 }
             }                     
 
@@ -100,7 +119,7 @@
             Console.WriteLine("Has perdido. La palabra era: " + palabraElegida);
         }
 
-        public static bool PerteneceAPalabra(string letraIngresada, string palabraElegida)
+        public bool PerteneceAPalabra(string letraIngresada, string palabraElegida)
         {
             return palabraElegida.Contains(letraIngresada, StringComparison.OrdinalIgnoreCase);
         }
