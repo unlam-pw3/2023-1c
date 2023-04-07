@@ -80,14 +80,32 @@ namespace Clase2.Logica
             }
         }
 
-        public void RestarIntento()
+        public void RestarIntento(int nivelIngresado)
         {
-            IntentosRestantes--;
+            if (nivelIngresado == 1)
+            {
+                IntentosRestantes--;
+            }else if (nivelIngresado == 2)
+            {
+                IntentosRestantes -= 2;
+            }
         }
 
         public bool QuedanIntentos()
         {
             return IntentosRestantes >= 0;
         }
+
+
+        public int getIntentosRestantes
+        {
+            get { return IntentosRestantes; }
+        }
+
+        public int setIntentosRestantes
+        {
+            set { IntentosRestantes = value; }
+        }
+
     }
 }

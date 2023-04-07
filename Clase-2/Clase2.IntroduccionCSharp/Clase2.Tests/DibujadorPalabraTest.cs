@@ -45,5 +45,17 @@ namespace Clase2.Tests
             // Assert
             Assert.Equal(palabraEsperada, palabraADibujar);
         }
+
+        [Fact]
+        public void perteneceAPalabra()
+        {
+            // Arrange
+            JuegoAhorcado juegoAhorcado = new JuegoAhorcado();
+            var palabraElegida = "hola";
+            var letraIngresada = "h";
+
+            // Assert
+            Assert.True(juegoAhorcado.PerteneceAPalabra(letraIngresada, palabraElegida));
+        }
     }
 }

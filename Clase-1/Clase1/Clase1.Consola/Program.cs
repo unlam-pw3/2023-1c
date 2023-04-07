@@ -1,11 +1,26 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Clase1.Logica;
 
-using Clase1.Logica;
-using OpenAI.GPT3.Managers;
-using OpenAI.GPT3;
-using OpenAI.GPT3.ObjectModels;
-using OpenAI.GPT3.ObjectModels.RequestModels;
-using Clase1.Logica.Ejercicios;
+Bola bola = new Bola();
 
-//CalculadoraEjercicio.Ejecutar();
-BolaMagica.Ejecutar();
+Boolean continue_ = true;
+
+while (continue_)
+{
+    Console.WriteLine("Ingrese una pregunta por si o por no, pulse 0 para salir");
+    string input = Console.ReadLine();
+
+    switch (input)
+    {
+        case "":
+            break;
+        case "0":
+            Console.WriteLine("\nAdios.");
+            continue_ = false;
+            break;
+        default:
+            bola.Agitar();
+            break;
+    } 
+}
+    
+
