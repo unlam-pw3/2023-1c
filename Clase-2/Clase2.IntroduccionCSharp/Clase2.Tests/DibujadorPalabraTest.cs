@@ -45,5 +45,6 @@ namespace Clase2.Tests
             // Assert
             Assert.Equal(palabraEsperada, palabraADibujar);
         }
+
     }
 }
