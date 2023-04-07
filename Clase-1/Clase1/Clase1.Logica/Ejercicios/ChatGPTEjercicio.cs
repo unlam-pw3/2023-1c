@@ -16,7 +16,7 @@ public static class ChatGPTEjercicio
 {
     public async static Task Ejecutar()
     {
-        string apiKey = "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";
+        string apiKey = "";
 
         var openAiService = new OpenAIService(new OpenAiOptions()
         {
