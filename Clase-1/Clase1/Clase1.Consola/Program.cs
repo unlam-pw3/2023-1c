@@ -1,12 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Clase1.Logica;
-using OpenAI.GPT3.Managers;
-using OpenAI.GPT3;
-using OpenAI.GPT3.ObjectModels;
-using OpenAI.GPT3.ObjectModels.RequestModels;
-using Clase1.Logica.Ejercicios;
 
 //CalculadoraEjercicio.Ejecutar();
 //await ChatGPTEjercicio.Ejecutar();
-Bola8Magica.Ejecutar();
+//Bola8Magica.Ejecutar();
+
+var api = new OpenAI_API.OpenAIAPI("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");
+var chat = api.Chat.CreateConversation();
+chat.AppendUserInput("crea una clase llamada perrro que tenga tres metodos en el leguaje java");
+var response = await chat.GetResponseFromChatbotAsync();
+//var result = await api.Completions.CreateCompletionAsync("crea una clase llamada perrro que tenga tres metodos");
+Console.WriteLine(response);
