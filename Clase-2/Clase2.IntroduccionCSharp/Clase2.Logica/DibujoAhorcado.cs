@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clase2.Logica
 {
-    internal class DibujoAhorcadoTradicional
+    public class DibujoAhorcadoTradicional
     {
         private int IntentosRestantes = 6;
         public void DibujarAhorcado()

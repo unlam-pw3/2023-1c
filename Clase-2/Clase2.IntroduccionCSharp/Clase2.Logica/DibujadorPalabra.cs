@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clase2.Logica
 {
-    internal class DibujadorPalabra
+    public class DibujadorPalabra
     {
         public void DibujarPalabra(string palabraElegida, List<string> letrasAdivinadas)
         {
@@ -42,8 +42,9 @@ namespace Clase2.Logica
                     palabraADibujar += $"{letra} ";
             
             }
-            return palabraADibujar;
+           return palabraADibujar.Trim();
         }
+    
 
       
         public void DibujarLetrasEntrantes(string palabraElegida, List<string> letrasAdivinadas)
@@ -51,5 +52,7 @@ namespace Clase2.Logica
             string palabraADibujar = ObtenerDibujoLetras(palabraElegida, letrasAdivinadas);
             Console.WriteLine(palabraADibujar);
         }
+      
+
     }
 }
