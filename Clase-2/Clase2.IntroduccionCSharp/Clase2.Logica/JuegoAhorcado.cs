@@ -23,6 +23,7 @@
         };
        
         private List<string> LetrasAdivinadas = new List<string>();
+        private List<string> LetrasIngresadas = new List<string>();
         public void Ejecutar()
         {
             var dibujoAhorcado = new DibujoAhorcadoTradicional();
@@ -40,6 +41,7 @@
                 string letraIngresada = Console.ReadLine();
 
                 bool perteneceAPalabra = PerteneceAPalabra(letraIngresada, palabraElegida);
+                LetrasIngresadas.Add(letraIngresada);
                 if (perteneceAPalabra)
                 {
                     LetrasAdivinadas.Add(letraIngresada);
@@ -59,9 +61,14 @@
                 }
                 //dibujar como se encuentra la palabra ctual con las incognitas y las letras ya descubiertas
                 dibujadorPalabra.DibujarPalabra(palabraElegida, LetrasAdivinadas);
-
+                Console.WriteLine("Recuerde estas letras ingresadas");
+                dibujadorPalabra.DibujarLetrasEntrantes(palabraElegida, LetrasIngresadas);
             } while (dibujoAhorcado.QuedanIntentos());
-            Console.WriteLine("Has perdido. La palabra era: " + palabraElegida);
+            //Verificar si salio por perdida o que realmente gano...
+            if (!dibujoAhorcado.QuedanIntentos()) {
+               Console.WriteLine("Has perdido. La palabra era: " + palabraElegida);
+            }
+           
         }
 
         public static bool PerteneceAPalabra(string letraIngresada, string palabraElegida)

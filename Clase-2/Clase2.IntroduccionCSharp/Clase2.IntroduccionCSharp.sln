@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clase2.Logica", "Clase2.Logica\Clase2.Logica.csproj", "{67165A0F-09DF-43F4-B391-6AC3EBA6977F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clase2.Logica", "Clase2.Logica\Clase2.Logica.csproj", "{67165A0F-09DF-43F4-B391-6AC3EBA6977F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clase2.Consola", "Clase2.Consola\Clase2.Consola.csproj", "{DA9328F3-A657-4F34-A995-429DC7771096}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clase2.Consola", "Clase2.Consola\Clase2.Consola.csproj", "{DA9328F3-A657-4F34-A995-429DC7771096}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clase2.Test", "Test\Clase2.Test.csproj", "{7C2CACC8-6F42-4BFD-A989-F4FC4D012E85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DA9328F3-A657-4F34-A995-429DC7771096}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA9328F3-A657-4F34-A995-429DC7771096}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA9328F3-A657-4F34-A995-429DC7771096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C2CACC8-6F42-4BFD-A989-F4FC4D012E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C2CACC8-6F42-4BFD-A989-F4FC4D012E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C2CACC8-6F42-4BFD-A989-F4FC4D012E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C2CACC8-6F42-4BFD-A989-F4FC4D012E85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

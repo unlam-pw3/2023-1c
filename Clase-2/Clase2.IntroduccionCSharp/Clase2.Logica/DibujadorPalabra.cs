@@ -31,5 +31,25 @@ namespace Clase2.Logica
             return palabraADibujar;
         }
 
+
+        //Para los faciles/principiantes pense que mostrar las letras ingresadas
+        public string ObtenerDibujoLetras(string palabraElegida, List<string> letrasAdivinadas)
+        {
+            string palabraADibujar = "";
+            foreach (string letra in letrasAdivinadas)
+            {
+                
+                    palabraADibujar += $"{letra} ";
+            
+            }
+            return palabraADibujar;
+        }
+
+      
+        public void DibujarLetrasEntrantes(string palabraElegida, List<string> letrasAdivinadas)
+        {
+            string palabraADibujar = ObtenerDibujoLetras(palabraElegida, letrasAdivinadas);
+            Console.WriteLine(palabraADibujar);
+        }
     }
 }
