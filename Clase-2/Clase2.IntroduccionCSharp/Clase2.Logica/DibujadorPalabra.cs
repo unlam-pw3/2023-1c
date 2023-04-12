@@ -28,7 +28,7 @@ namespace Clase2.Logica
                     palabraADibujar += "_ ";
                 }
             }
-            return palabraADibujar;
+            return palabraADibujar.Trim();
         }
 
 

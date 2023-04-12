@@ -61,23 +61,15 @@
             Console.WriteLine("Ingrese  nivel de dificultas Principiante (P) o avanzado (A)");
             string nivelIngresado = Console.ReadLine()
                                            .ToUpper();
+            
             if (nivelIngresado != "P" && nivelIngresado != "A")
             {
                 Console.WriteLine("Opción no válida. Por favor, seleccione P o A");
                 return;
             }
+           
+           string palabraElegida = SelectorDeNivel(nivelIngresado ,LetrasAdivinadas);
 
-            //empezar juego y elegir una palabra dependoiendo del nivel
-            string palabraElegida = "";
-            if (nivelIngresado == "P")
-            {
-                esPrincipiante = true;
-                palabraElegida = PalabrasPosiblesPrincipiantes[new Random().Next(PalabrasPosiblesPrincipiantes.Count())];
-                LetrasAdivinadas.Add(palabraElegida[..1][0].ToString());
-            }
-            else {
-                palabraElegida = PalabrasPosiblesAvanzado[new Random().Next(PalabrasPosiblesAvanzado.Count())];
-            }
             //string palabraElegida = PalabrasPosibles[new Random().Next(PalabrasPosibles.Count())];
 
             //usuario ingresa una letra y se valida si pertenece a la palabra, si no pertenece se dibuja una parte del cuerpo del ahorcado
@@ -109,11 +101,14 @@
                 }
                 //dibujar como se encuentra la palabra ctual con las incognitas y las letras ya descubiertas
                 dibujadorPalabra.DibujarPalabra(palabraElegida, LetrasAdivinadas);
+
                 //Ayuda Memoria en principiante para sus letras ingresadas
-                Console.WriteLine("Recuerde estas letras ingresadas \n****");
-                dibujadorPalabra.DibujarLetrasEntrantes(palabraElegida, LetrasIngresadas);
-                Console.WriteLine("****");
+                //Console.WriteLine("\n\n\nRecuerde estas letras ingresadas \n****");
+                //dibujadorPalabra.DibujarLetrasEntrantes(palabraElegida, LetrasIngresadas);
+                //Console.WriteLine("****");
+
             } while (dibujoAhorcado.QuedanIntentos());
+
             //Verificar si salio por perdida o que realmente gano..
             if (!dibujoAhorcado.QuedanIntentos()) {
                Console.WriteLine("Has perdido. La palabra era: " + palabraElegida);
@@ -124,6 +119,23 @@
         public static bool PerteneceAPalabra(string letraIngresada, string palabraElegida)
         {
             return palabraElegida.Contains(letraIngresada, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static string SelectorDeNivel(string nivelIngresado,List<string> LetrasAdivinadas) {
+
+            //empezar juego y elegir una palabra dependoiendo del nivel
+            string palabraElegida;
+            if (nivelIngresado == "P")
+            {                   
+                palabraElegida = PalabrasPosiblesPrincipiantes[new Random().Next(PalabrasPosiblesPrincipiantes.Count())];
+                LetrasAdivinadas.Add(palabraElegida[..1][0].ToString());
+             
+            }
+            else
+            {
+                palabraElegida = PalabrasPosiblesAvanzado[new Random().Next(PalabrasPosiblesAvanzado.Count())];
+            }
+            return palabraElegida;
         }
     }
 }
