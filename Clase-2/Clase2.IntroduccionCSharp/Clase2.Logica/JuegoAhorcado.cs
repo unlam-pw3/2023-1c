@@ -1,71 +1,78 @@
-﻿namespace Clase2.Logica
+﻿namespace Clase2.Logica;
+
+public class JuegoAhorcado
 {
-    public class JuegoAhorcado
+    private List<string> LetrasAdivinadas = new List<string>();
+
+    public void Ejecutar()
     {
-        private static List<string> PalabrasPosibles = new List<string>()
-        {
-            //Cosas que pueden estar en la cocina
-            "Cuchillo",
-            "Cuchara",
-            "Tenedor",
-            "Plato",
-            "Vaso",
-            "Mesa",
-            "Sarten",
-            "Cucharon",
-            "Mantel",
-            "Copa",
-            "Cafetera",
-            "Microondas",
-            "Refrigerador",
-            "Taza",
-            "Jarra",
-        };
-       
-        private List<string> LetrasAdivinadas = new List<string>();
-        public void Ejecutar()
-        {
-            var dibujoAhorcado = new DibujoAhorcadoTradicional();
-            var dibujadorPalabra = new DibujadorPalabra();
-            //Crear lista de palabras posibles con alguna tematica
+        var modoJuego = ObtenerModoJuego();
+        var dibujoAhorcado = new DibujoAhorcadoTradicional();
+        var dibujadorPalabra = new DibujadorPalabra(LetrasAdivinadas);
 
-            //empezar juego y elegir una palabra
-            string palabraElegida = PalabrasPosibles[new Random().Next(PalabrasPosibles.Count())];
+        //Crear lista de palabras posibles con alguna tematica
+        string palabraElegida = ObtenerPalabraElegida(modoJuego);
 
-            //usuario ingresa una letra y se valida si pertenece a la palabra, si no pertenece se dibuja una parte del cuerpo del ahorcado
-            do
+        if (modoJuego.Equals(ModoJuego.PRINCIPIANTE))
+        {
+            var letraVisible = palabraElegida[0].ToString();
+
+            LetrasAdivinadas.Add(letraVisible);
+        }
+
+        //empezar juego y elegir una palabra
+        //usuario ingresa una letra y se valida si pertenece a la palabra, si no pertenece se dibuja una parte del cuerpo del ahorcado
+        do
+        {
+            //dibujar como se encuentra la palabra ctual con las incognitas y las letras ya descubiertas
+            dibujadorPalabra.DibujarPalabra(palabraElegida);
+            Console.WriteLine("Ingrese una letra");
+            string letraIngresada = Console.ReadLine();
+
+            bool perteneceAPalabra = PerteneceAPalabra(letraIngresada, palabraElegida);
+            if (perteneceAPalabra)
             {
-                //dibujar como se encuentra la palabra ctual con las incognitas y las letras ya descubiertas
-                dibujadorPalabra.DibujarPalabra(palabraElegida, LetrasAdivinadas);
-                Console.WriteLine("Ingrese una letra");
-                string letraIngresada = Console.ReadLine();
-
-                bool perteneceAPalabra = PerteneceAPalabra(letraIngresada, palabraElegida);
-                if (perteneceAPalabra)
+                LetrasAdivinadas.Add(letraIngresada);
+                if (!dibujadorPalabra.ObtenerDibujoPalabra(palabraElegida).Contains("_"))
                 {
-                    LetrasAdivinadas.Add(letraIngresada);
-                    if (!dibujadorPalabra.ObtenerDibujoPalabra(palabraElegida, LetrasAdivinadas).Contains("_"))
-                    {
-                        Console.WriteLine("Ganaste!");
-                        Console.WriteLine($"La palabra era {palabraElegida}");
-                        return;
-                    }
+                    Console.WriteLine("Ganaste!");
+                    Console.WriteLine($"La palabra era {palabraElegida}");
+                    return;
                 }
-                else
-                {
-                    //si no pertenece se dibuja una parte del cuerpo del ahorcado
-                    //dibujar parte del cuerpo del ahorcado
-                    dibujoAhorcado.DibujarAhorcado();
-                    dibujoAhorcado.RestarIntento();
-                }
+            }
+            else
+            {
+                //si no pertenece se dibuja una parte del cuerpo del ahorcado
+                //dibujar parte del cuerpo del ahorcado
+                dibujoAhorcado.DibujarAhorcado();
+                dibujoAhorcado.RestarIntento();
+            }
 
-            } while (dibujoAhorcado.QuedanIntentos());
-            Console.WriteLine("Has perdido. La palabra era: " + palabraElegida);
-        }
+        } while (dibujoAhorcado.QuedanIntentos());
+        Console.WriteLine("Has perdido. La palabra era: " + palabraElegida);
+    }
 
-        public static bool PerteneceAPalabra(string letraIngresada, string palabraElegida)
-        {
-            return palabraElegida.Contains(letraIngresada, StringComparison.OrdinalIgnoreCase);
-        }
+
+    private static string ObtenerPalabraElegida(ModoJuego modoJuego)
+    {
+        var palabrasPosibles = modoJuego.Equals(ModoJuego.PRINCIPIANTE)
+                ? DiccionarioPalabras.palabrasPrincipiante
+                : DiccionarioPalabras.palabrasAvanzado;
+
+        return palabrasPosibles[new Random().Next(palabrasPosibles.Count())];
+    }
+
+    private static ModoJuego ObtenerModoJuego ()
+    {
+        Console.WriteLine("Elija un modo de juego:\n 1- Principiante \n 2- Avanzado");
+
+        return Console.ReadLine().Equals("1") 
+            ? ModoJuego.PRINCIPIANTE 
+            : ModoJuego.AVANZADO;
+    }
+
+    public static bool PerteneceAPalabra(string letraIngresada, string palabraElegida)
+    {
+        return palabraElegida.Contains(letraIngresada, StringComparison.OrdinalIgnoreCase);
     }
 }
