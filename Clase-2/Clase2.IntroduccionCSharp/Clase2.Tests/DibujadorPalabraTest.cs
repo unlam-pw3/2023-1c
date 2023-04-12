@@ -46,5 +46,34 @@ namespace Clase2.Tests
             Assert.Equal(palabraEsperada, palabraADibujar);
         }
 
+        [Fact]
+        public void DibujarPalabra_DibujarPalabraSegunModoDeJuegoPrincipiante()
+        {
+            // Arrange
+            var dibujadorPalabra = new DibujadorPalabra();
+            var palabraElegida = "Plato";
+            var letrasAdivinadas = new List<string> {};
+            int modoJuegoPrincipiante = 1;
+            var palabraEsperada = "P _ _ _ _";
+            // Act
+            var palabraADibujar = dibujadorPalabra.DibujarPalabraSegunModoDeJuego(palabraElegida, letrasAdivinadas, modoJuegoPrincipiante);
+            // Assert
+            Assert.Equal(palabraEsperada, palabraADibujar);
+        }
+
+        [Fact]
+        public void DibujarPalabra_DibujarPalabraSegunModoDeJuegoAvanzado()
+        {
+            // Arrange
+            var dibujadorPalabra = new DibujadorPalabra();
+            var palabraElegida = "tenedor";
+            var letrasAdivinadas = new List<string> { };
+            int modoJuegoAvanzado = 2;
+            var palabraEsperada = "_ _ _ _ _ _ _";
+            // Act
+            var palabraADibujar = dibujadorPalabra.DibujarPalabraSegunModoDeJuego(palabraElegida, letrasAdivinadas, modoJuegoAvanzado);
+            // Assert
+            Assert.Equal(palabraEsperada, palabraADibujar);
+        }
     }
 }

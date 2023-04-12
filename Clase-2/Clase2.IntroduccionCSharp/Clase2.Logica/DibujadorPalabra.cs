@@ -9,14 +9,13 @@ namespace Clase2.Logica
 {
     public class DibujadorPalabra
     {
-        public void DibujarPalabraSegunModoDeJuego(string palabraElegida, List<string> letrasAdivinadas, int modoJuego)
+        public string DibujarPalabraSegunModoDeJuego(string palabraElegida, List<string> letrasAdivinadas, int modoJuego)
         {
             if (1 == modoJuego)
             {
                 letrasAdivinadas.Add(ObtenerPrimerLetra(palabraElegida));
             }
-            string palabraADibujar = ObtenerDibujoPalabra(palabraElegida, letrasAdivinadas);
-            Console.WriteLine(palabraADibujar);
+            return ObtenerDibujoPalabra(palabraElegida, letrasAdivinadas);
         }
 
         public string ObtenerDibujoPalabra(string palabraElegida, List<string> letrasAdivinadas)

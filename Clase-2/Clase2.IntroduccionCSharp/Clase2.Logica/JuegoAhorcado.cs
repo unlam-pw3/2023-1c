@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Clase2.Tests;
+using System.Diagnostics;
 
 namespace Clase2.Logica
 {
@@ -39,7 +40,7 @@ namespace Clase2.Logica
             int modoJuego = Iniciarjuego();
 
             //Termina el juego
-            if (modoJuego == 0)
+            if ((int) Modojuego.Salir == modoJuego)
             {
                 return;
             }
@@ -51,7 +52,7 @@ namespace Clase2.Logica
             do
             {
                 //dibujar como se encuentra la palabra actual con las incognitas y las letras ya descubiertas
-                dibujadorPalabra.DibujarPalabraSegunModoDeJuego(palabraElegida, LetrasAdivinadas, modoJuego);
+                Console.WriteLine(dibujadorPalabra.DibujarPalabraSegunModoDeJuego(palabraElegida, LetrasAdivinadas, modoJuego));
                 Console.WriteLine("Ingrese una letra");
                 string letraIngresada = Console.ReadLine();
 
@@ -90,7 +91,7 @@ namespace Clase2.Logica
             return palabraElegida.Contains(letraIngresada, StringComparison.OrdinalIgnoreCase);
         }
 
-        public static int Iniciarjuego()
+        public int Iniciarjuego()
         {
             int modoJuego;
             Console.WriteLine("Bienvenido al juego del ahorcado tematica: Cocina");
@@ -102,18 +103,20 @@ namespace Clase2.Logica
                 Console.WriteLine("Ingrese 0 para terminar el juego");
                 int.TryParse(Console.ReadLine(), out modoJuego);
 
-            }while (!(1==modoJuego || 2==modoJuego || 0 == modoJuego));
+            }while (!((int)Modojuego.Principiante == modoJuego 
+                        || (int)Modojuego.Avanzado == modoJuego 
+                        || (int)Modojuego.Salir == modoJuego));
             return modoJuego;
         }
 
-        public static string ObtenerPalabraSegunModoDeJuego(int modoJuego) {
+        public string ObtenerPalabraSegunModoDeJuego(int modoJuego) {
             string palabraElegida = "";
             switch (modoJuego)
             {
-                case 1:
+                case (int)Modojuego.Principiante:
                     palabraElegida = PalabrasPosiblesPrincipiante[new Random().Next(PalabrasPosiblesPrincipiante.Count())];
                     break;
-                case 2:
+                case (int)Modojuego.Avanzado:
                     palabraElegida = PalabrasPosiblesAvanzado[new Random().Next(PalabrasPosiblesAvanzado.Count())];
                     break;
             }
