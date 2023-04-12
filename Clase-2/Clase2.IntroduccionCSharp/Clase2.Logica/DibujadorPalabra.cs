@@ -14,7 +14,7 @@ namespace Clase2.Logica
             Console.WriteLine(palabraADibujar);
         }
 
-        public string ObtenerDibujoPalabra(string palabraElegida, List<string> letrasAdivinadas)
+        public string ObtenerDibujoPalabra(string palabraElegida, List<string> letrasAdivinadas )
         {
             string palabraADibujar = "";
             foreach (char letra in palabraElegida)
@@ -30,6 +30,29 @@ namespace Clase2.Logica
             }
             return palabraADibujar.Trim();
         }
+
+
+        //Para los faciles/principiantes pense que mostrar las letras ingresadas
+        public string ObtenerDibujoLetras(string palabraElegida, List<string> letrasAdivinadas)
+        {
+            string palabraADibujar = "";
+            foreach (string letra in letrasAdivinadas)
+            {
+                
+                    palabraADibujar += $"{letra} ";
+            
+            }
+           return palabraADibujar.Trim();
+        }
+    
+
+      
+        public void DibujarLetrasEntrantes(string palabraElegida, List<string> letrasAdivinadas)
+        {
+            string palabraADibujar = ObtenerDibujoLetras(palabraElegida, letrasAdivinadas);
+            Console.WriteLine(palabraADibujar);
+        }
+      
 
     }
 }

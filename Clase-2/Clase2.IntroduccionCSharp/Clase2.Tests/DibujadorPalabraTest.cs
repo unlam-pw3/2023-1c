@@ -45,5 +45,34 @@ namespace Clase2.Tests
             // Assert
             Assert.Equal(palabraEsperada, palabraADibujar);
         }
+
+        [Fact]
+        public void ObtenerPalabraParaPrincipiantes()
+        {
+            // Arrange 
+            var dibujadorPalabra = new DibujadorPalabra();
+            var letrasAdivinadas = new List<string> {};
+            // Act
+            var palabraADibujar = JuegoAhorcado.SelectorDeNivel("P", letrasAdivinadas);
+            //var palabraADibujar = dibujadorPalabra.ObtenerDibujoPalabra(palabraElegida, letrasAdivinadas);
+            // Assert
+            Assert.NotEmpty(letrasAdivinadas[0]);
+            Assert.True(palabraADibujar.Length<=6);
+        }
+
+        [Fact]
+        public void ObtenerPalabraParaAvanzado()
+        {
+            // Arrange 
+            
+            var letrasAdivinadas = new List<string> { };
+         
+            // Act
+            var palabraADibujar = JuegoAhorcado.SelectorDeNivel("A", letrasAdivinadas);
+            //var palabraADibujar = dibujadorPalabra.ObtenerDibujoPalabra(palabraElegida, letrasAdivinadas);
+            // Assert
+            Assert.Empty(letrasAdivinadas);
+            Assert.True(palabraADibujar.Length >6);
+        }
     }
 }
