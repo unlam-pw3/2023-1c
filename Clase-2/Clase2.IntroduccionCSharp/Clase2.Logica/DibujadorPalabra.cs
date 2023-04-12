@@ -14,7 +14,7 @@ namespace Clase2.Logica
             Console.WriteLine(palabraADibujar);
         }
 
-        public string ObtenerDibujoPalabra(string palabraElegida, List<string> letrasAdivinadas)
+        public string ObtenerDibujoPalabra(string palabraElegida, List<string> letrasAdivinadas )
         {
             string palabraADibujar = "";
             foreach (char letra in palabraElegida)

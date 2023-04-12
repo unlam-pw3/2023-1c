@@ -21,7 +21,34 @@
             "Taza",
             "Jarra",
         };
-       
+
+        private static List<string> PalabrasPosiblesPrincipiantes = new List<string>()
+        {
+            //Cosas que pueden estar en la cocina
+            "Plato",
+            "Vaso",
+            "Mesa",
+            "Sarten",
+            "Mantel",
+            "Copa",
+            "Taza",
+            "Jarra",
+        };
+
+        private static List<string> PalabrasPosiblesAvanzado = new List<string>()
+        {
+            //Cosas que pueden estar en la cocina
+            "Cuchillo",
+            "Cuchara",
+            "Tenedor",
+            "Cucharon",
+            "Cafetera",
+            "Microondas",
+            "Refrigerador",
+        };
+
+        private Boolean esPrincipiante = false;
+
         private List<string> LetrasAdivinadas = new List<string>();
         private List<string> LetrasIngresadas = new List<string>();
         public void Ejecutar()
@@ -30,8 +57,28 @@
             var dibujadorPalabra = new DibujadorPalabra();
             //Crear lista de palabras posibles con alguna tematica
 
-            //empezar juego y elegir una palabra
-            string palabraElegida = PalabrasPosibles[new Random().Next(PalabrasPosibles.Count())];
+            //Se solicita el nivel 1 vez para empezar eljuego
+            Console.WriteLine("Ingrese  nivel de dificultas Principiante (P) o avanzado (A)");
+            string nivelIngresado = Console.ReadLine()
+                                           .ToUpper();
+            if (nivelIngresado != "P" && nivelIngresado != "A")
+            {
+                Console.WriteLine("Opción no válida. Por favor, seleccione P o A");
+                return;
+            }
+
+            //empezar juego y elegir una palabra dependoiendo del nivel
+            string palabraElegida = "";
+            if (nivelIngresado == "P")
+            {
+                esPrincipiante = true;
+                palabraElegida = PalabrasPosiblesPrincipiantes[new Random().Next(PalabrasPosiblesPrincipiantes.Count())];
+                LetrasAdivinadas.Add(palabraElegida[..1][0].ToString());
+            }
+            else {
+                palabraElegida = PalabrasPosiblesAvanzado[new Random().Next(PalabrasPosiblesAvanzado.Count())];
+            }
+            //string palabraElegida = PalabrasPosibles[new Random().Next(PalabrasPosibles.Count())];
 
             //usuario ingresa una letra y se valida si pertenece a la palabra, si no pertenece se dibuja una parte del cuerpo del ahorcado
             do
@@ -62,8 +109,10 @@
                 }
                 //dibujar como se encuentra la palabra ctual con las incognitas y las letras ya descubiertas
                 dibujadorPalabra.DibujarPalabra(palabraElegida, LetrasAdivinadas);
-                Console.WriteLine("Recuerde estas letras ingresadas");
+                //Ayuda Memoria en principiante para sus letras ingresadas
+                Console.WriteLine("Recuerde estas letras ingresadas \n****");
                 dibujadorPalabra.DibujarLetrasEntrantes(palabraElegida, LetrasIngresadas);
+                Console.WriteLine("****");
             } while (dibujoAhorcado.QuedanIntentos());
             //Verificar si salio por perdida o que realmente gano..
             if (!dibujoAhorcado.QuedanIntentos()) {
