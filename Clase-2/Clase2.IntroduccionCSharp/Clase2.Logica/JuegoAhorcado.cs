@@ -15,9 +15,9 @@ public class JuegoAhorcado
 
         if (modoJuego.Equals(ModoJuego.PRINCIPIANTE))
         {
-            char letraVisible = palabraElegida[new Random().Next(palabraElegida.Count())];
+            var letraVisible = palabraElegida[0].ToString();
 
-            LetrasAdivinadas.Add(letraVisible.ToString());
+            LetrasAdivinadas.Add(letraVisible);
         }
 
         //empezar juego y elegir una palabra

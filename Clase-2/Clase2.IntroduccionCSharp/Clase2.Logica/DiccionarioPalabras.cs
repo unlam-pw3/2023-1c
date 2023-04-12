@@ -16,8 +16,6 @@ public class DiccionarioPalabras
 
     public static readonly List<string> palabrasPrincipiante = new List<string>()
     {
-
-        "Poncho",
         "Vaso",
         "Mesa",
         "Taza",
