@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,11 @@ namespace Clase3.MVC.Dominio.Logica
             _tiposPoderes.Add(new Entidades.TipoPoder() { Id = 3, Nombre = "Curacion" });
         }
 
+        private int ObtenerProxId()
+        {
+            return _tiposPoderes.Count() + 1;
+        }
+
         public List<Entidades.TipoPoder> ObtenerTodos()
         {
             return _tiposPoderes;
@@ -36,6 +42,15 @@ namespace Clase3.MVC.Dominio.Logica
 
         public void Agregar(Entidades.TipoPoder tipoPoder)
         {
+            tipoPoder.Nombre = tipoPoder.Nombre.Trim();
+
+            if (_tiposPoderes.Any(tp => tp.Nombre.Equals(tipoPoder.Nombre, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ArgumentException();
+            }
+
+            tipoPoder.Id = ObtenerProxId();
+
             _tiposPoderes.Add(tipoPoder);
         }
 
