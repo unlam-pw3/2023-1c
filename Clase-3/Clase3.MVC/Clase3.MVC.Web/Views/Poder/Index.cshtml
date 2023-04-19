@@ -1,8 +1,8 @@
-﻿@model List<Clase3.MVC.Dominio.Entidades.TipoPoder>
+﻿@model List<Clase3.MVC.Dominio.Entidades.Poder>
 @{
-    ViewBag.Title = "Tipo de Poderes";
+    ViewBag.Title = "Poderes";
 }
-<a href="/tipopoderes/Agregar">Agregar Tipo de Poder</a>
+<a href="/poder/Agregar">Agregar Poder</a>
 <table>
     <tr>
         <th>
@@ -25,9 +25,9 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.ActionLink("Ver", "Detalle", "TipoPoderes", new { id=item.Id }) |
-                @Html.ActionLink("Eliminar", "Eliminar", "TipoPoderes", new { id=item.Id }) |
-                @Html.ActionLink("Editar", "FormularioEditarTipoPoder", "TipoPoderes", new { id=item.Id })
+                @Html.ActionLink("Ver", "Detalle", "Poder", new { id=item.Id }) |
+                @Html.ActionLink("Eliminar", "Eliminar", "Poder", new { id=item.Id }) |
+                @Html.ActionLink("Editar", "FormularioEditarPoder", "Poder", new { id=item.Id })
             </td>
         </tr>
     }

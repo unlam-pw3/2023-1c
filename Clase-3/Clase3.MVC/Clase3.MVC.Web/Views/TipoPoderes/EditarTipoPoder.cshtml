@@ -1,0 +1,20 @@
+﻿@model Clase3.MVC.Dominio.Entidades.TipoPoder
+
+<h1>Editar Tipo de Poder</h1>
+@using (Html.BeginForm("EditarTipoPoder", "TipoPoderes", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+    <div>
+        @Html.LabelFor(model => model.Nombre)
+        @Html.TextBoxFor(model => model.Nombre)
+    </div>
+    @if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Mensaje
+        </div>
+    }
+    <div>
+        <input type="submit" value="Editar" />
+    </div>
+}

@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<ITipoPoderRepositorio, TipoPoderRepositorio>();
+builder.Services.AddSingleton<IPoderesRepositorio, PoderesRepositorio>();
 
 var app = builder.Build();
 

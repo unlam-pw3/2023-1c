@@ -1,0 +1,20 @@
+﻿@model Clase3.MVC.Dominio.Entidades.Poder
+<h1>Agregar Poder</h1>
+
+@using (Html.BeginForm("Agregar", "Poder", FormMethod.Post))
+{
+<div>
+    @Html.LabelFor(model => model.Nombre)
+    @Html.TextBoxFor(model => model.Nombre)
+    @Html.DropDownListFor(model => model.Tipo, new SelectList(Model.Tipo.Nombre, "Value", "Text"))
+</div>
+@if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+    {
+<div class="alert alert-danger">
+    @ViewBag.Mensaje
+</div>
+    }
+<div>
+    <input type="submit" value="Agregar" />
+</div>
+}

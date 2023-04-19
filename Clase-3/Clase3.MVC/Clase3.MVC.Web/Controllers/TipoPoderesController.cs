@@ -32,12 +32,12 @@ namespace Clase3.MVC.Web.Controllers
             }
             catch (ArgumentException ex)
             {
-               ViewBag.Mensaje = $"El nombre de poder {tipoPoder.Nombre} ya existe";
-               return View(tipoPoder);
+                ViewBag.Mensaje = $"El nombre de poder {tipoPoder.Nombre} ya existe";
+                return View(tipoPoder);
             }
             catch (Exception ex)
             {
-                ViewBag.Mensaje = ex.Message;
+                ViewBag.Mensaje = "No puede estar vacio el nombre del tipo de poder";
                 return View(tipoPoder);
             }
 
@@ -49,6 +49,51 @@ namespace Clase3.MVC.Web.Controllers
         {
             _tipoPoderRepositorio.Eliminar(id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Detalle(int? id)
+        {
+            var tipoPoderEncontrado = _tipoPoderRepositorio.ObtenerTipoPoder(id);
+            return View(tipoPoderEncontrado);
+        }
+
+        [HttpGet]
+        public IActionResult FormularioEditarTipoPoder(int? id)
+        {
+            var tipoPoderEncontrado = _tipoPoderRepositorio.ObtenerTipoPoder(id);
+            ViewBag.Mensaje = "El nombre de poder ya existe";
+            return View(tipoPoderEncontrado);
+        }
+
+        [HttpPost]
+        public IActionResult EditarTipoPoder(TipoPoder tipoPoder)
+        {
+            try
+            {
+                var poderExistente = _tipoPoderRepositorio.ObtenerTipoPoderPorNombre(tipoPoder.Nombre);
+                if (poderExistente != null && poderExistente.Id != tipoPoder.Id)
+                {
+                    ViewBag.Mensaje = "El nombre de poder ya existe";
+                    return View(tipoPoder);
+                }
+                else
+                {
+                   // ViewBag.Mensaje = "Su edición se ha hecho correctamente";
+                    _tipoPoderRepositorio.Editar(tipoPoder);
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                ViewBag.Mensaje = "El nombre de poder está vacío";
+                return View(tipoPoder);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = $"Error al editar el tipo de poder: {ex.Message}";
+                return View(tipoPoder);
+            }
         }
     }
 }
