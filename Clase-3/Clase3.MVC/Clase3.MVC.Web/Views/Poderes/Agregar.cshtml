@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*@model Clase3.MVC.Dominio.Entidades.Poder*@
+@model Clase3.MVC.Web.Models.PoderViewModel
+<h1>Agregar Poder</h1>
+
+@using (Html.BeginForm("Agregar", "Poderes", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(model => model.Nombre)
+        @Html.TextBoxFor(model => model.Nombre)
+
+        @Html.LabelFor(model => model.Tipo  )
+     @*  @Html.DropDownListFor(model => model.Tipo, new SelectList(Model.Tipos,"Id", "Nombre"))*@
+        @Html.DropDownListFor(model => model.Tipo.Id, ViewBag.Tipos as SelectList, "-- Seleccione un tipo --")
+        @Html.LabelFor(model => model.Daño  )
+        @Html.TextBoxFor(model => model.Daño)
+    </div>
+    @if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Mensaje
+        </div>
+    }
+    <div>
+        <input type="submit" value="Agregar" />
+    </div>
+}
