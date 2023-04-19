@@ -1,0 +1,27 @@
+﻿@model Clase3.MVC.Web.Models.ClassViewModel;
+<h1>Agregar Poder</h1>
+
+@using (Html.BeginForm("Agregar", "Poderes", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(model => model.poder.Nombre)
+        @Html.TextBoxFor(model => model.poder.Nombre)
+
+        @Html.LabelFor(model => model.poder.Tipo.Nombre)
+        @Html.ListBoxFor(model => model.poder.Tipo.Id, new SelectList(Model.tipoPoder, "Id", "Nombre"))
+
+        @Html.LabelFor(model => model.poder.Daño)
+        @Html.TextBoxFor(model => model.poder.Daño)
+    </div>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Mensaje
+        </div>
+    }
+
+    <div>
+        <input type="submit" value="Agregar" />
+    </div>
+}

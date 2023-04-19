@@ -1,0 +1,45 @@
+﻿@model Clase3.MVC.Web.Models.ClassViewModel;
+@{
+    ViewBag.Title = "Poderes";
+}
+
+<a href="/poderes/Agregar">Agregar Poder</a>
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Daño
+        </th>
+    </tr>
+    @foreach (var item in Model.poderes)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.poder.Tipo.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Daño)
+            </td>
+            <td>
+                @Html.ActionLink("Ver", "Detalle", "Poderes", new { id=item.Id }) |
+                @Html.ActionLink("Eliminar", "Eliminar", "Poderes", new { id=item.Id })
+                <a href="/home/index">Volver</a>
+            </td>
+        </tr>
+    }
+</table>
+
