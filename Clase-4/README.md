@@ -1,4 +1,4 @@
-#  Clase 3 - Intro a MVC
+#  Clase 3 - MVC
 
 ## En Clase
 Se mostro un ejemplo de una aplicación de Heroes, Posee logica para:
