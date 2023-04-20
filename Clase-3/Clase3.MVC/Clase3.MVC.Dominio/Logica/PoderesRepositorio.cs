@@ -38,7 +38,14 @@ namespace Clase3.MVC.Dominio.Logica
 
         public void Agregar(Entidades.Poder poder)
       
-        {   poder.Id = _poderes.Count() + 1;
+        {
+            poder.Nombre = poder.Nombre.Trim();
+            if (_poderes.Any(tp => tp.Nombre.Equals(poder.Nombre, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ArgumentException();
+            }
+
+            poder.Id = _poderes.Count() + 1;
             _poderes.Add(poder);
         }
 

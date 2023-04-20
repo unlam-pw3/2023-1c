@@ -24,8 +24,12 @@ namespace Clase3.MVC.Web.Controllers
         [HttpGet]
         public ActionResult Agregar()
         {
-            var tipos = _tipoPoderesR.ObtenerTodos();
-            ViewBag.Tipos = new SelectList(tipos, "Id", "Nombre");
+     var tipos = _tipoPoderesR.ObtenerTodos(); 
+            //ViewBag.Tipos = new SelectList(tipos, "Id", "Nombre");
+            ViewBag.Tipo = tipos.Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Nombre }).ToList();
+       
+         
+
             return View();
         }
 
@@ -34,6 +38,8 @@ namespace Clase3.MVC.Web.Controllers
         {
             try
             {
+                var tipo = ViewBag.Tipos as IEnumerable<TipoPoder>;
+                poderes.Tipo = tipo.FirstOrDefault(t => t.Id == poderes.Tipo.Id);
                 _poderRepositorio.Agregar(poderes);
             }
             catch (ArgumentException ex)
@@ -73,43 +79,7 @@ namespace Clase3.MVC.Web.Controllers
         }
 
      
-             
-        //// POST: PoderesController/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        // GET: PoderesController/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: PoderesController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
+     
         
     
     }

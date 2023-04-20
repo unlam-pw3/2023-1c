@@ -14,9 +14,12 @@
         @Html.LabelFor(model => model.Nombre)
         @Html.TextBoxFor(model => model.Nombre)
 
-        @Html.LabelFor(model => model.Tipo  )
-     @*  @Html.DropDownListFor(model => model.Tipo, new SelectList(Model.Tipos,"Id", "Nombre"))*@
-        @Html.DropDownListFor(model => model.Tipo.Id, ViewBag.Tipos as SelectList, "-- Seleccione un tipo --")
+    
+        @Html.LabelFor(model => model.Tipo)
+        @*@Html.DropDownListFor(model => model.Tipo, new SelectList(Model.Tipo.Id,"Id", "Nombre"))*@
+@*        @Html.DropDownListFor(model => model.Tipo, ViewBag.Tipos as SelectList, "-- Seleccione un tipo --")*@
+        @Html.DropDownListFor(model => model.Tipo.Id, (IEnumerable<SelectListItem>)ViewBag.TipoList)
+        @*@Html.TextBoxFor(model => model.Tipo.Nombre);*@
         @Html.LabelFor(model => model.Daño  )
         @Html.TextBoxFor(model => model.Daño)
     </div>
