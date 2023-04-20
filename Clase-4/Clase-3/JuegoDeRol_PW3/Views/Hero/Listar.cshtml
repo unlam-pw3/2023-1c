@@ -1,0 +1,35 @@
+﻿@model List<JuegoDeRol_PW3.Repositorio.Entidades.Hero>
+@{
+    ViewData["Title"] = "Listar";
+}
+
+<table class="table bg-white container">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Creador</th>
+            <th scope="col">Fecha de Alta</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Detalle</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+    {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Nombre</td>
+            <td>@item.Creador</td>
+            <td>@item.FechaAlta</td>
+            <td>@item.Editorial <p>TAREA:Hacer que figure el nombre, <br>y programar que filtre por Editorial</p></td>
+            <td><a href="/Hero/Detalle/@item.Id">ver</a></td>
+
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+
