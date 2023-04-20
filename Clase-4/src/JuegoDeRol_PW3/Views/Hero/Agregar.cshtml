@@ -1,0 +1,52 @@
+﻿@model JuegoDeRol_PW3.Web.Models.HeroEditorialesViewModel
+@{
+}
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<div style="display:flex; justify-content:center">
+<form method="post" enctype="multipart/form-data" asp-action="Agregar" asp-controller="Hero" style="width:800px; background-color:gray; margin-top:30px">
+    <h1>Agregar Heroe</h1>
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="@Model.heroe.Nombre">Nombre del Heroe</label>
+        <input asp-for="@Model.heroe.Nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+        <span asp-validation-for="@Model.heroe.Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.heroe.Creador">Nombre del Creador</label>
+        <input asp-for="@Model.heroe.Creador" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+        <span asp-validation-for="@Model.heroe.Creador" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.heroe.Descripcion">Descripcion</label>
+        <input asp-for="@Model.heroe.Descripcion" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+        <span asp-validation-for="@Model.heroe.Descripcion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.imagen">Ingrese la Imagen</label>
+        <input asp-for="@Model.imagen" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+        <span asp-validation-for="@Model.imagen" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <label asp-for="@Model.heroe.Editorial">Ingrese la Imagen</label>
+        <select asp-for="@Model.heroe.Editorial">
+                <option value="">Ingrese la Editorial</option>
+            @foreach (var item in Model.editoriales)
+            {
+                <option value="@item.Id">@item.Nombre</option>
+
+            }
+        </select>
+        <span asp-validation-for="@Model.heroe.Editorial" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+</div>
