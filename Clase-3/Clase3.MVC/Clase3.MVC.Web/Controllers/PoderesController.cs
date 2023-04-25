@@ -9,9 +9,9 @@ namespace Clase3.MVC.Web.Controllers
     {
         IPoderesRepositorio _poderRepositorio;
         ITipoPoderRepositorio _tipoPoderesR;
-        public PoderesController(IPoderesRepositorio poderesRepositorio,ITipoPoderRepositorio tipoPoderesRepositori) {
+        public PoderesController(IPoderesRepositorio poderesRepositorio, ITipoPoderRepositorio tipoPoderesRepositori) {
             _poderRepositorio = poderesRepositorio;
-            _tipoPoderesR=tipoPoderesRepositori;
+            _tipoPoderesR = tipoPoderesRepositori;
         }
 
         // GET: PoderesController
@@ -24,12 +24,8 @@ namespace Clase3.MVC.Web.Controllers
         [HttpGet]
         public ActionResult Agregar()
         {
-     var tipos = _tipoPoderesR.ObtenerTodos(); 
-            //ViewBag.Tipos = new SelectList(tipos, "Id", "Nombre");
-            ViewBag.Tipo = tipos.Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Nombre }).ToList();
-       
-         
-
+            var tipos = _tipoPoderesR.ObtenerTodos();
+            ViewBag.Tipos = new SelectList(tipos, "Id", "Nombre");
             return View();
         }
 
@@ -38,8 +34,10 @@ namespace Clase3.MVC.Web.Controllers
         {
             try
             {
-                var tipo = ViewBag.Tipos as IEnumerable<TipoPoder>;
-                poderes.Tipo = tipo.FirstOrDefault(t => t.Id == poderes.Tipo.Id);
+                var tipos = _tipoPoderesR.ObtenerTodos();
+                TipoPoder? tipoPoder = tipos.FirstOrDefault(t => t.Id == poderes.Tipo.Id);
+                poderes.Tipo = tipoPoder;
+                //System.Diagnostics.Debug.WriteLine("El valor de la variable es: " + ViewBag.Tipos);
                 _poderRepositorio.Agregar(poderes);
             }
             catch (ArgumentException ex)
@@ -59,28 +57,55 @@ namespace Clase3.MVC.Web.Controllers
         // GET: PoderesController/Details/5
         public ActionResult Detalles(int id)
         {
-           
-          var poder = _poderRepositorio.buscarPorID(id);
+
+            var poder = _poderRepositorio.buscarPorID(id);
             return View(poder);
         }
 
-        // GET: PoderesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-
-        // GET: PoderesController/Delete/5
+   
         public ActionResult eliminar(int id)
         {
             _poderRepositorio.Eliminar(id);
             return RedirectToAction("Index");
         }
 
-     
-     
-        
-    
+        // GET: PoderesController/modificar/5
+        public ActionResult modificar(int id) {
+
+            var poder = _poderRepositorio.buscarPorID(id);
+            var tipos = _tipoPoderesR.ObtenerTodos();
+            ViewBag.Tipos = new SelectList(tipos, "Id", "Nombre");
+            return View(poder);
+
+        }
+
+        // Post/¿Put?: PoderesController/modificar
+        [HttpPost]
+        public IActionResult modificar(Poder poderes)
+        {
+            try
+            {
+                var tipos = _tipoPoderesR.ObtenerTodos();
+                TipoPoder? tipoPoder = tipos.FirstOrDefault(t => t.Id == poderes.Tipo.Id);
+                poderes.Tipo = tipoPoder;
+                //System.Diagnostics.Debug.WriteLine("El valor de la variable es: " + ViewBag.Tipos);
+                _poderRepositorio.modificar(poderes);
+            }
+            catch (ArgumentException ex)
+            {
+                ViewBag.Mensaje = $"El nombre de poder {poderes.Nombre} ya existe";
+                return View(poderes);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = ex.Message;
+                return View(poderes);
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
+
+        
 }

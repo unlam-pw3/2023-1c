@@ -13,6 +13,7 @@ namespace Clase3.MVC.Dominio.Logica
         void Agregar(Entidades.Poder poder);
         void Eliminar(int id);
         Entidades.Poder buscarPorID(int id);
+        void modificar(Poder poderes);
     }
 
     public class PoderesRepositorio : IPoderesRepositorio
@@ -63,5 +64,10 @@ namespace Clase3.MVC.Dominio.Logica
             return _poderes.Find(p => p.Id == id);
         }
 
+        public void modificar(Poder poderes)
+        {
+            int poderIndex=_poderes.FindIndex(p => p.Id == poderes.Id);
+            _poderes[poderIndex] = poderes;
+        }
     }
 }
