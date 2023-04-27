@@ -10,7 +10,9 @@ namespace Clase3.MVC.Dominio.Entidades
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public TipoPoder Tipo { get; set; }
+        public virtual TipoPoder Tipo { get; set; }
+
+        public int idTipo { get; set; }
         public int Daño { get; set; }
     }
 }
