@@ -49,5 +49,18 @@ namespace Clase6.PasajeDeDatos.Web.Controllers
             ViewBag.PromedioDeGol = goles / partidos;
             return View();
         }
+
+        public IActionResult IngresarUltimoTweetDeJugador()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult IngresarUltimoTweetDeJugador(string usuarioTwiter, string tweet)
+        {
+            TempData["UsuarioTwiter"] = usuarioTwiter;
+            TempData["Tweet"] = tweet;
+            return RedirectToAction("Index");
+        }
     }
 }

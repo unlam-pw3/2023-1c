@@ -4,6 +4,17 @@
 @{
 }
 <h1>Jugadores de la Seleccion (2023)</h1>
+
+@if (TempData["Tweet"] != null)
+{
+    <h2>
+        Ultimo Tweet
+    </h2>
+
+    <div>
+        @TempData["UsuarioTwiter"]: <i>"@TempData["Tweet"]"</i>
+    </div>
+}
 <div>
     <ul>
         @foreach (Clase6.PasajeDeDatos.Web.Controllers.Jugador jugador in ViewBag.Jugadores)
