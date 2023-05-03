@@ -1,0 +1,44 @@
+﻿@model JuegoDeRol_PW3.Web.Models.HeroEditorialViewModel
+@{
+
+}
+
+<div style="display:flex; flex-direction:row; background-color:white;" class="container">
+
+    <div style="display:flex">
+        <div> <img src="@Model.heroe.Imagen"> </div>
+    </div>
+
+    <table class="table container; padding-top:50px">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Creador</th>
+                <th scope="col">Fecha de Alta</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Editar</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+           
+                <tr>
+                <td>@Model.heroe.Nombre</td>
+                <td>@Model.heroe.Creador</td>
+                <td>@Model.heroe.FechaAlta</td>
+                <td>@Model.heroe.Descripcion</td>
+                <td><a href="/Hero/Modificar/@Model.heroe.Id">Editar</a></td>
+
+                </tr>
+            
+        </tbody>
+    </table>
+
+</div>
+
+<div class="container bg-dark" style="height:auto; text-align:center">
+<partial name="_editorial" model="Model.editorial"/>
+</div>
+
+
