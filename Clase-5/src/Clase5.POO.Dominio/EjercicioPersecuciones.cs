@@ -39,6 +39,22 @@ namespace Clase5.POO.Dominio
             ratonMickey.Nombre = "Mickey";
             ratonMickey.Velocidad = 1;
 
+            Aguila aguilucho = new Aguila(poseeAlasProminentes: true);
+            aguilucho.Velocidad = 1;
+            aguilucho.Nombre = "Agulicho";
+
+            Raton ratonMickeyCL = new Raton(poseeColaLarga: true);
+            ratonMickeyCL.Nombre = "MickeyColaLarga";
+            ratonMickeyCL.Velocidad = 3;
+
+            Aguila aguilagordo = new Aguila(poseeAlasProminentes: true);
+            aguilucho.Velocidad = 1;
+            aguilucho.Nombre = "AguilaGordo";
+
+            Serpiente Serpiente=new Serpiente();
+            Serpiente.Velocidad = 1;
+            Serpiente.Nombre = "SerpienteComun";
+
             Persecucion persecucion = new Persecucion();
             persecucion.Ejecutar(perroPluto, gatoGarfield);
             persecucion.Ejecutar(perroPluto, gatoTom);
@@ -50,6 +66,33 @@ namespace Clase5.POO.Dominio
             persecucion.Ejecutar(gatoTom, ratonMickey);
 
             persecucion.Ejecutar(gatoTom, perroLassie);
+
+            persecucion.Ejecutar(aguilucho, ratonMickey);
+            persecucion.Ejecutar(aguilucho, ratonMickeyCL);
+
+            persecucion.Ejecutar(perroPluto, aguilucho);
+            persecucion.Ejecutar(perroPluto,Serpiente);
+            /*******SubHerencia************************/
+            GatoSalvaje gatoSalvaje = new GatoSalvaje();
+            gatoSalvaje.Nombre = "Salvajon";
+            gatoSalvaje.PoseeGarrasAfiladas = false;
+            gatoSalvaje.poseeDientesDesarrollados = false;
+            gatoSalvaje.Velocidad = 5;
+
+            Gato gatoDomestico = new Gato();
+            gatoDomestico.Nombre = "MichiMichi";
+            gatoDomestico.PoseeGarrasAfiladas = true;
+            gatoDomestico.Velocidad = 5;
+
+            GatoSalvaje gatoSalvajeColmilludo = new GatoSalvaje();
+            gatoSalvajeColmilludo.Nombre = "SalvajeColmilludo";
+            gatoSalvajeColmilludo.PoseeGarrasAfiladas = false;
+            gatoSalvajeColmilludo.poseeDientesDesarrollados = true;
+            gatoSalvajeColmilludo.Velocidad = 5;
+
+            persecucion.Ejecutar(gatoSalvaje, gatoDomestico);
+            persecucion.Ejecutar(gatoSalvajeColmilludo, gatoSalvaje);
+            persecucion.Ejecutar(gatoSalvaje, gatoSalvajeColmilludo);
         }
     }
 }
