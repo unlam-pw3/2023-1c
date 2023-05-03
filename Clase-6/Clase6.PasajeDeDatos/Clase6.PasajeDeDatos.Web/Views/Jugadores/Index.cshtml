@@ -4,9 +4,22 @@
 @{
 }
 <h1>Jugadores de la Seleccion (2023)</h1>
-<ul>
-    @foreach (var jugador in ViewBag.Jugadores)
-    {
-        <li>@jugador</li>
-    }
-</ul>
+<div>
+    <ul>
+        @foreach (Clase6.PasajeDeDatos.Web.Controllers.Jugador jugador in ViewBag.Jugadores)
+        {
+            <li>@jugador.Nombre @jugador.Apellido (*)</li>
+        }
+    </ul>
+</div>
+<div>
+    <span>
+        <i>
+            (*) Competencias disputadas:
+            @foreach (var competencia in ViewBag.Competencias)
+            {
+                @Html.Raw(" - ") @competencia
+            }
+        </i>
+    </span>
+</div>
