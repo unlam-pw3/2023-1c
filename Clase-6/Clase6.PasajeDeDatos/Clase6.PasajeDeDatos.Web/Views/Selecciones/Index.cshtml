@@ -5,11 +5,14 @@
 }
 @model List<SeleccionViewModel>
 <h1>Selecciones sudamericanas eliminatorias Mundial 2026</h1>
-<div>
-    <ul>
-        @foreach (var seleccion in Model.OrderBy(s=> s.Nombre).ToList())
-        {
-            <li>@seleccion.Nombre (@seleccion.Apodo)</li>
-        }
-    </ul>
-</div>
+<form method="post" action="/selecciones/index">
+    <div>
+        <ul>
+            @foreach (var seleccion in Model.OrderBy(s => s.Nombre).ToList())
+            {
+                <li>@seleccion.Nombre (@seleccion.Apodo)</li>
+                <input type="submit" value="Seleccionar" name="@seleccion.Nombre" />
+            }
+        </ul>
+    </div>
+</form>

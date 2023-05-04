@@ -72,5 +72,14 @@ namespace Clase6.PasajeDeDatos.Web.Controllers
             };
             return View(seleccionesSudamericanasEliminatorias2026);
         }
+
+        [HttpPost]
+        public IActionResult Index(IFormCollection form)
+        {
+            string nombreBoton = form.Keys.FirstOrDefault(k => !string.IsNullOrEmpty(form[k]));
+            if (!string.IsNullOrEmpty(nombreBoton))
+                HttpContext.Session.SetString("SeleccionFavorita", nombreBoton);
+            return RedirectToAction("Index");
+        }
     }
 }

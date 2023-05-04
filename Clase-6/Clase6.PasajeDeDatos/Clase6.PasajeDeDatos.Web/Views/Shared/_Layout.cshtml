@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -38,6 +41,14 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <!--renderizo la imagen de la bandera de la seleccion elegida de sudamerica -->
+            @{
+                string seleccionFavorita = HttpContextAccessor.HttpContext.Session.GetString("SeleccionFavorita");
+                if (seleccionFavorita != null)
+                {
+                    <img height="60" width="100" src="@Html.Raw("https://norfipc.com/img/banderas/bandera-" + seleccionFavorita.ToLower() + ".png")" />
+                }
+            }
             @RenderBody()
         </main>
     </div>
