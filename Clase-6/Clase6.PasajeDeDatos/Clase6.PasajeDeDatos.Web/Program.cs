@@ -2,7 +2,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;
-//builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+//agregando tiempo de expiracion y nombre de cookie para la Sesion
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".MiAPP.Session";
+    options.IdleTimeout = TimeSpan.FromSeconds(60);
+});
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -19,6 +27,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

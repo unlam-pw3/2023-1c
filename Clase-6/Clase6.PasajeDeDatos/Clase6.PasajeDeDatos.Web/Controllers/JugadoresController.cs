@@ -35,5 +35,32 @@ namespace Clase6.PasajeDeDatos.Web.Controllers
             ViewBag.Jugadores = jugadores;
             return View();
         }
+
+        public IActionResult CalcularPromedioDeGol()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CalcularPromedioDeGol(double partidos, double goles)
+        {
+            ViewBag.Partidos = partidos;
+            ViewBag.Goles = goles;
+            ViewBag.PromedioDeGol = goles / partidos;
+            return View();
+        }
+
+        public IActionResult IngresarUltimoTweetDeJugador()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult IngresarUltimoTweetDeJugador(string usuarioTwiter, string tweet)
+        {
+            TempData["UsuarioTwiter"] = usuarioTwiter;
+            TempData["Tweet"] = tweet;
+            return RedirectToAction("Index");
+        }
     }
 }
