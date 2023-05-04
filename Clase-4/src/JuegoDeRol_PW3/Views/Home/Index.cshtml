@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div style="display:flex; flex-direction:column; justify-content:space-around; align-items:center; height:500px">
+
+
+    <div class="card" style="width:500px; background-color:lightslategray">
+        <h5 class="card-header text-white">Agregar Un Nuevo Heroe</h5>
+        <div class="card-body">
+             <p class="card-text">Si conoces algun Heroe que no ha sido agregado podes hacerlo sin problemas</p>
+            <a asp-controller="Hero" asp-action="Agregar" class="btn btn-dark">Agregar</a>
+        </div>
+    </div>
+
+    <div class="card" style="width:500px; background-color:lightslategray">
+        <h5 class="card-header text-white">Listar Heroes Guardados</h5>
+        <div class="card-body">
+            <p class="card-text">Contamos con el catalogo más extenso de Heroes de todos los tiempos</p>
+            <a asp-controller="Hero" asp-action="Listar" class="btn btn-dark">Listar Heroes</a>
+        </div>
+    </div>
+
+</div>

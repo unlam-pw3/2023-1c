@@ -1,0 +1,44 @@
+﻿@model JuegoDeRol_PW3.Web.Models.HeroEditorialViewModel
+
+@{
+}
+<div style="display:flex; flex-direction:row; background-color:white;" class="container">
+
+    <div style="display:flex">
+        <div> <img src="@Model.heroe.Imagen"> </div>
+    </div>
+    <form method="post" asp-action="Modificar" asp-controller="Hero">
+    <table class="table container; padding-top:50px">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Creador</th>
+                <th scope="col">Fecha de Alta</th>
+                <th scope="col">Descripcion</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td><input name="Nombre" value="@Model.heroe.Nombre" /></td>
+                <td><input name="Creador" value="@Model.heroe.Creador" /></td>
+                <td>@Model.heroe.FechaAlta</td>
+                <td><input name="Descripcion" value="@Model.heroe.Descripcion" /></td>
+            </tr>
+
+            <tr>
+                    <td><button type="Submit" class="btn-secondary">GUARDAR CAMBIOS</button></td>
+                    <td><a class="btn-secondary" href="/Hero/Eliminar/@Model.heroe.Id">ELIMINAR</a></td>
+            </tr>
+
+        </tbody>
+    </table>
+     <input hidden name="Id" value="@Model.heroe.Id"/>
+    </form>
+</div>
+
+<div class="container bg-dark" style="height:auto; text-align:center">
+    <partial name="_editorial" model="Model.editorial" />
+</div>
