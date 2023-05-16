@@ -1,0 +1,38 @@
+﻿@model Clase3.MVC.Web.Models.ClassViewModel;
+@{
+    ViewBag.Title = "Poderes";
+}
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Daño
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.poder.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.poder.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.poder.Tipo.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.poder.Daño)
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Eliminar", "Poderes", new { id= Model.poder.Id})
+            <a href="/poderes/index">Volver</a>
+        </td>
+    </tr>
+</table>

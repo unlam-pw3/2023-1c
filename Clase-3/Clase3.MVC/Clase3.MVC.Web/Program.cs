@@ -7,6 +7,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<ITipoPoderRepositorio, TipoPoderRepositorio>();
 
+builder.Services.AddSingleton<IPoderesRepositorio, PoderesRepositorio>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

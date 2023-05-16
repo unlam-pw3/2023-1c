@@ -11,6 +11,7 @@ namespace Clase3.MVC.Dominio.Logica
     public interface ITipoPoderRepositorio
     {
         List<Entidades.TipoPoder> ObtenerTodos();
+        Entidades.TipoPoder ObtenerEspecifico(int id);
         void Agregar(Entidades.TipoPoder poder);
         void Eliminar(int id);
     }
@@ -40,6 +41,15 @@ namespace Clase3.MVC.Dominio.Logica
             return _tiposPoderes;
         }
 
+        public Entidades.TipoPoder ObtenerEspecifico(int id)
+        {
+            var tipoPoder = _tiposPoderes.FirstOrDefault(x => x.Id == id);
+            if (tipoPoder != null)
+            {
+                return tipoPoder;
+            }
+            throw new ArgumentException();
+        }
         public void Agregar(Entidades.TipoPoder tipoPoder)
         {
             tipoPoder.Nombre = tipoPoder.Nombre.Trim();

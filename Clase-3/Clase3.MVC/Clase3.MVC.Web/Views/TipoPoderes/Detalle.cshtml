@@ -1,0 +1,30 @@
+﻿@model Clase3.MVC.Dominio.Entidades.TipoPoder
+@{
+    ViewBag.Title = "Tipo de Poder";
+}
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Accion
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Nombre)
+        </td>
+        <td>
+            <a href="/tipopoderes/index">Volver</a>
+            @Html.ActionLink("Eliminar", "Eliminar", "TipoPoderes", new { id= Model.Id})
+        </td>
+    </tr>
+</table>
+

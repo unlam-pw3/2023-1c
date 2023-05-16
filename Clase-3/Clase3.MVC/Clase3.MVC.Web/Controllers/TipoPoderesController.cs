@@ -20,7 +20,21 @@ namespace Clase3.MVC.Web.Controllers
         [HttpGet]
         public IActionResult Agregar()
         {
+            var tipoPoder = _tipoPoderRepositorio.ObtenerTodos();
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Ver()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Detalle(int id)
+        {
+            var tipoPoder =  _tipoPoderRepositorio.ObtenerEspecifico(id);
+            return View(tipoPoder);
         }
 
         [HttpPost]
