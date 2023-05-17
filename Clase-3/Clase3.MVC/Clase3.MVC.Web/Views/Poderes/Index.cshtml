@@ -1,0 +1,35 @@
+﻿@model List<Clase3.MVC.Dominio.Entidades.Poder>
+@{
+    ViewBag.Title = "Poderes";
+}
+<a href="/poderes/Agregar">Agregar un Poder Nuevo</a>
+<table>
+<tr>
+    <th>
+        Id
+    </th>
+    <th>
+        Nombre
+    </th>
+    <th>
+        Accion
+    </th>
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("ver", "detalles", "poderes", new { id=item.Id }) |
+            @Html.ActionLink("eliminar", "eliminar", "poderes", new { id=item.Id })|
+            @Html.ActionLink("modificar", "modificar", "poderes", new { id=item.Id })
+        </td>
+    </tr>
+}
+</table>

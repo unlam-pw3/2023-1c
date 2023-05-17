@@ -1,0 +1,43 @@
+﻿@model Clase3.MVC.Dominio.Entidades.Poder
+@{
+    ViewBag.Title = "Detalles de Poderes";
+}
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+          ID_Tipo
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+           Daño
+        </th>
+    </tr>
+
+  
+        <tr>
+            <td>
+            @Html.DisplayFor(model => model.Id)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.Nombre)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.Tipo.Id)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.Tipo.Nombre)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.Daño)
+            </td>
+        </tr>
+
+</table>
