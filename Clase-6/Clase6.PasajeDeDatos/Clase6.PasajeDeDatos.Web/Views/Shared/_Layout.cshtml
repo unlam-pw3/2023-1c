@@ -10,8 +10,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Clase6.PasajeDeDatos.Web.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: @(ViewContext.HttpContext.Session.GetString("ColorFondo") ?? "white");
+        }
+    </style>
 </head>
-<body>
+<body >
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -33,6 +38,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Jugadores" asp-action="CalcularPromedioDeGol">Calcular Promedio DeGol</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Colores" asp-action="Index">Colores-session</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Estadios" asp-action="Index">Estadios-Viewmodel</a>
                         </li>
                     </ul>
                 </div>
