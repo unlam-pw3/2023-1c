@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Clase7.EF.IslaDelTesoro.Data.Entidades.Tesoro>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@foreach (var item in Model)
+{
+    <div>
+        <h4>@item.Nombre ($@item.Valor)</h4>
+        <img src="@item.ImagenUrl" style="height:100px"/>
+        <p><i>@item.Descripcion</i></p>
+        @*<p>@item.Ubicacion</p>*@
+    </div>
+}

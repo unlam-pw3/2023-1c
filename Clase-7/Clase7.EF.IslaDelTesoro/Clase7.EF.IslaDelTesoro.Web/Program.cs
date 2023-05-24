@@ -1,7 +1,11 @@
+using Clase7.EF.IslaDelTesoro.Data.Entidades;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<PW320231CEFIslaDelTesoroContext>();
 
 var app = builder.Build();
 
