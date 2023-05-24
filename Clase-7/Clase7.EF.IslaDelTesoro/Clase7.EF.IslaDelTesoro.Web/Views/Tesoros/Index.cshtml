@@ -5,11 +5,14 @@
 @{
 }
 
+<div>
+    <a href="/tesoros/crear">Crear</a>
+</div>
 @foreach (var item in Model)
 {
     <div>
         <h4>@item.Nombre ($@item.Valor)</h4>
-        <img src="@item.ImagenUrl" style="height:100px"/>
+        <img src="@item.ImagenUrl" style="height:100px" />
         <p><i>@item.Descripcion</i></p>
         @*<p>@item.Ubicacion</p>*@
     </div>

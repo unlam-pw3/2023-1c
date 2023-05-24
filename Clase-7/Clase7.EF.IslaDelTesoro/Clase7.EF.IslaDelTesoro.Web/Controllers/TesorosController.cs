@@ -15,5 +15,22 @@ namespace Clase7.EF.IslaDelTesoro.Web.Controllers
             var tesoros = _context.Tesoros.ToList();
             return View(tesoros);
         }
+
+        public IActionResult Crear()
+        {
+            return View(new Tesoro());
+        }
+
+        [HttpPost]
+        public IActionResult Crear(Tesoro tesoro)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Tesoros.Add(tesoro);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(tesoro);
+        }
     }
 }
