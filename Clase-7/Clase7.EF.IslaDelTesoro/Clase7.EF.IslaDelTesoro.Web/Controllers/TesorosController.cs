@@ -32,5 +32,16 @@ namespace Clase7.EF.IslaDelTesoro.Web.Controllers
             }
             return View(tesoro);
         }
+
+        public IActionResult Eliminar(int id)
+        {
+            var tesoro = _context.Tesoros.Find(id);
+            if (tesoro != null)
+            {
+                _context.Tesoros.Remove(tesoro);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

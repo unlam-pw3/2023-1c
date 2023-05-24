@@ -11,8 +11,10 @@
 @foreach (var item in Model)
 {
     <div>
-        <h4>@item.Nombre ($@item.Valor)</h4>
-        <img src="@item.ImagenUrl" style="height:100px" />
+        <span class="h4">@item.Nombre ($@item.Valor)</span> <a href="/tesoros/eliminar/@item.Id"><img src="https://cdn-icons-png.flaticon.com/512/3221/3221845.png" style="height:10px" /></a>
+        <div>
+            <img src="@item.ImagenUrl" style="height:100px" />
+        </div>
         <p><i>@item.Descripcion</i></p>
         @*<p>@item.Ubicacion</p>*@
     </div>
