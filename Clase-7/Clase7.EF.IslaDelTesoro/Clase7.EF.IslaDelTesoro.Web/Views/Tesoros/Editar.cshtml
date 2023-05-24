@@ -1,9 +1,9 @@
 ﻿@model Clase7.EF.IslaDelTesoro.Data.Entidades.Tesoro
 @{
-    ViewData["Title"] = "Crear";
+    ViewData["Title"] = "Editar";
 }
-<form action="/Tesoros/Crear" method="post">
-
+<form action="/Tesoros/Editar" method="post">
+    <input type="hidden" value="@Model.Id" name="Id" />
     <div>
         Nombre: <input type="text" name="Nombre" value="@Model.Nombre" />
     </div>
@@ -16,6 +16,6 @@
     <div>
         ImagenUrl: <input type="text" name="ImagenUrl" value="@Model.ImagenUrl" />
     </div>
-    
-    <input type="submit" value="Crear" />
+
+    <input type="submit" value="Guardar" />
 </form>
