@@ -54,7 +54,17 @@ namespace Clase6.PasajeDeDatos.Web.Controllers
         {
             return View();
         }
-        
+
+
+       
+
+        public IActionResult UltimoJugador(string UltimoJugador)
+        {//Me di cuenta que en esta instancia no puedo agregar el nuevo jugador
+         //a la array creado en el action index
+            TempData["UltimoJugador"]=UltimoJugador;
+
+            return RedirectToAction("Index","home");
+        }
         [HttpPost]
         public IActionResult IngresarUltimoTweetDeJugador(string usuarioTwiter, string tweet)
         {

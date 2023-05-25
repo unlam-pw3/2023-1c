@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<EstadioViewModel>
+<div>
+    <h2>ESTADIOS SUDAMERICANOS</h2>
+    <ul>
+        @foreach (EstadioViewModel estadio in Model)
+        {
+            <li>@estadio.Nombre (*)</li>
+            <h5>@estadio.SeleccionPerteneciente.Nombre</h5>
+            @if (@estadio.SeleccionPerteneciente.Nombre == null)
+            {
+                <h5>
+                    Pais Perteneciente no ingresado</h5>
+               
+            }
+            <img src=@estadio.urlImagenEstadio width="300">
+        }
+    </ul>
+</div>
+<div>
+    <a href="https://es.wikipedia.org/wiki/Anexo:Estadios_de_f%C3%BAtbol_de_Am%C3%A9rica_del_Sur">Mas informacion en Wiki...</a>
+    
+</div>
