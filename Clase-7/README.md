@@ -3,6 +3,8 @@
 ## En Clase
 Hicimos ejemplos Alta, Baja, Modificacion y Listado de la entidad "Tesoro"
 
+![Lista Tesoros](captura-lista-tesoros.png?raw=true "Lista Tesoros")
+
 ## Modelo de datos
 Tesoro
 - [Id] [int] IDENTITY(1,1) NOT NULL,
