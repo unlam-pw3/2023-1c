@@ -18,6 +18,10 @@ namespace Clase7.EF.IslaDelTesoro.Web.Controllers
 
         public IActionResult Crear()
         {
+            ViewBag.Ubicaciones = _context.Ubicacions
+                   .OrderBy(o => o.Nombre)
+                   .ToList();
+
             return View(new Tesoro());
         }
 
@@ -26,10 +30,15 @@ namespace Clase7.EF.IslaDelTesoro.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                tesoro.IdUbicacion = tesoro.IdUbicacion;
                 _context.Tesoros.Add(tesoro);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.Ubicaciones = _context.Ubicacions
+                   .OrderBy(o => o.Nombre)
+                   .ToList();
             return View(tesoro);
         }
 
