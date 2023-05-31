@@ -17,6 +17,7 @@ namespace Clase7.EF.IslaDelTesoro.Data.Entidades
         }
 
         public virtual DbSet<Tesoro> Tesoros { get; set; } = null!;
+        public virtual DbSet<Ubicacion> Ubicacions { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -46,6 +47,20 @@ namespace Clase7.EF.IslaDelTesoro.Data.Entidades
                     .IsUnicode(false);
 
                 entity.Property(e => e.Valor).HasColumnType("decimal(10, 2)");
+
+                entity.HasOne(d => d.IdUbicacionNavigation)
+                    .WithMany(p => p.Tesoros)
+                    .HasForeignKey(d => d.IdUbicacion)
+                    .HasConstraintName("FK_Tesoro_Ubicacion");
+            });
+
+            modelBuilder.Entity<Ubicacion>(entity =>
+            {
+                entity.ToTable("Ubicacion");
+
+                entity.Property(e => e.ImagenUrl).HasMaxLength(1000);
+
+                entity.Property(e => e.Nombre).HasMaxLength(200);
             });
 
             OnModelCreatingPartial(modelBuilder);

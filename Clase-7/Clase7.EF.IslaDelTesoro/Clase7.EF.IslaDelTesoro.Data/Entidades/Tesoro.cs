@@ -9,7 +9,9 @@ namespace Clase7.EF.IslaDelTesoro.Data.Entidades
         public string? Nombre { get; set; }
         public string? Descripcion { get; set; }
         public string? ImagenUrl { get; set; }
-        public int? Ubicacion { get; set; }
         public decimal? Valor { get; set; }
+        public int? IdUbicacion { get; set; }
+
+        public virtual Ubicacion? IdUbicacionNavigation { get; set; }
     }
 }
