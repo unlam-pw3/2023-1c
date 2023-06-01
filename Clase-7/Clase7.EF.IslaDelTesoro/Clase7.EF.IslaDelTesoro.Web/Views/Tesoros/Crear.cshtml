@@ -1,4 +1,5 @@
-﻿@model Clase7.EF.IslaDelTesoro.Data.Entidades.Tesoro
+﻿@using Clase7.EF.IslaDelTesoro.Data.Entidades
+@model Clase7.EF.IslaDelTesoro.Data.Entidades.Tesoro
 @{
     ViewData["Title"] = "Crear";
 }
@@ -16,6 +17,12 @@
     <div>
         ImagenUrl: <input type="text" name="ImagenUrl" value="@Model.ImagenUrl" />
     </div>
-    
+
+    <select name="IdUbicacion">
+        @foreach (Ubicacion ubicacion in ViewBag.Ubicaciones)
+        {
+            <option value="@ubicacion.Id">@ubicacion.Nombre</option>
+        }
+    </select>
     <input type="submit" value="Crear" />
 </form>

@@ -18,6 +18,10 @@ namespace Clase7.EF.IslaDelTesoro.Web.Controllers
 
         public IActionResult Crear()
         {
+            ViewBag.Ubicaciones = _context.Ubicacions
+                   .OrderBy(o => o.Nombre)
+                   .ToList();
+
             return View(new Tesoro());
         }
 
@@ -26,10 +30,15 @@ namespace Clase7.EF.IslaDelTesoro.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                tesoro.IdUbicacion = tesoro.IdUbicacion;
                 _context.Tesoros.Add(tesoro);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.Ubicaciones = _context.Ubicacions
+                   .OrderBy(o => o.Nombre)
+                   .ToList();
             return View(tesoro);
         }
 
@@ -38,6 +47,9 @@ namespace Clase7.EF.IslaDelTesoro.Web.Controllers
             var tesoro = _context.Tesoros.Find(id);
             if (tesoro != null)
             {
+                ViewBag.Ubicaciones = _context.Ubicacions
+                    .OrderBy(o => o.Nombre)
+                    .ToList();
                 return View(tesoro);
             }
             return RedirectToAction("Index");
@@ -70,14 +82,18 @@ namespace Clase7.EF.IslaDelTesoro.Web.Controllers
                 tesoroEnBD.Nombre = tesoro.Nombre;
                 tesoroEnBD.Descripcion = tesoro.Descripcion;
                 tesoroEnBD.ImagenUrl = tesoro.ImagenUrl;
-                tesoroEnBD.Ubicacion = tesoro.Ubicacion;
                 tesoroEnBD.Valor = tesoro.Valor;
-
+                tesoroEnBD.IdUbicacion = tesoro.IdUbicacion;
+                
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
+            ViewBag.Ubicaciones = _context.Ubicacions
+                .OrderBy(o=> o.Nombre)
+                .ToList();
+            
             return View(tesoro);
-
         }
 
         public IActionResult Eliminar(int id)
