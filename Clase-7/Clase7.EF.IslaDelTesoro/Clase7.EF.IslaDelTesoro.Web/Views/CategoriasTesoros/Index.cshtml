@@ -1,0 +1,19 @@
+﻿@using Clase7.EF.IslaDelTesoro.Data.Entidades
+@model List<CategoriaTesoro>
+
+@{
+    ViewData["Title"] = "Categorias Tesoro";
+}
+<table>
+    <tr>
+        <th>IdCategoriaTesoro</th>
+        <th>Nombre</th>
+    </tr>
+    @foreach (CategoriaTesoro categoria in Model)
+    {
+        <tr>
+            <td>@categoria.IdCategoriaTesoro</td>
+            <td>@categoria.Nombre</td>
+        </tr>
+    }
+</table>
