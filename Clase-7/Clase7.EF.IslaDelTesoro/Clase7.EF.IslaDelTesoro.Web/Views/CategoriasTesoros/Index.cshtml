@@ -8,12 +8,14 @@
     <tr>
         <th>IdCategoriaTesoro</th>
         <th>Nombre</th>
+        <th>Operacion</th>
     </tr>
     @foreach (CategoriaTesoro categoria in Model)
     {
         <tr>
             <td>@categoria.IdCategoriaTesoro</td>
             <td>@categoria.Nombre</td>
+            <td><a href="/CategoriasTesoros/Eliminar/@categoria.IdCategoriaTesoro">@categoria.Nombre</a></td>
         </tr>
     }
 </table>

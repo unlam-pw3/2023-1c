@@ -1,4 +1,5 @@
-﻿using Clase7.EF.IslaDelTesoro.Data.Entidades;
+﻿using System.Data.Entity;
+using Clase7.EF.IslaDelTesoro.Data.Entidades;
 
 namespace Clase7.EF.IslaDelTesoro.Logica
 {
@@ -6,6 +7,7 @@ namespace Clase7.EF.IslaDelTesoro.Logica
     {
         List<CategoriaTesoro> ObtenerTodos();
         List<CategoriaTesoro> ObtenerFiltrado(int[] IdCategoriaTesoros);
+        void Eliminar(int idCategoriaTesoro);
     }
 
     public class CategoriaTesoroServicio : ICategoriaTesoroServicio
@@ -28,6 +30,25 @@ namespace Clase7.EF.IslaDelTesoro.Logica
                 .Where(ct => IdCategoriaTesoros.Contains(ct.IdCategoriaTesoro))
                 .OrderBy(c => c.Nombre)
                 .ToList();
+        }
+
+        public void Eliminar(int idCategoriaTesoro)
+        {
+            var categoriaTesoro = _contexto.CategoriaTesoros
+                .Include(t=> t.IdTesoros)
+                .FirstOrDefault(c=> c.IdCategoriaTesoro == idCategoriaTesoro);
+            
+            if (categoriaTesoro != null)
+            {
+                foreach (var tesoro in categoriaTesoro.IdTesoros)
+                {
+                    tesoro.IdCategoriaTesoros.Remove(categoriaTesoro);
+                    //_contexto.Tesoros.Remove(tesoro);
+                }
+
+                _contexto.CategoriaTesoros.Remove(categoriaTesoro);
+                _contexto.SaveChanges();
+            }
         }
     }
     

@@ -14,5 +14,11 @@ namespace Clase7.EF.IslaDelTesoro.Web.Controllers
         {
             return View(_categoriaTesoroServicio.ObtenerTodos());
         }
+
+        public IActionResult Eliminar(int id)
+        {
+            _categoriaTesoroServicio.Eliminar(id);
+            return RedirectToAction("Index");
+        }
     }
 }
