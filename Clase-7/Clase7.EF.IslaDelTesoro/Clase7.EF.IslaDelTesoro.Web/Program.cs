@@ -1,4 +1,5 @@
 using Clase7.EF.IslaDelTesoro.Data.Entidades;
+using Clase7.EF.IslaDelTesoro.Logica;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<PW320231CEFIslaDelTesoroContext>();
+builder.Services.AddScoped<ICategoriaTesoroServicio, CategoriaTesoroServicio>();
 
 var app = builder.Build();
 

@@ -5,6 +5,11 @@ namespace Clase7.EF.IslaDelTesoro.Data.Entidades
 {
     public partial class Tesoro
     {
+        public Tesoro()
+        {
+            IdCategoriaTesoros = new HashSet<CategoriaTesoro>();
+        }
+
         public int Id { get; set; }
         public string? Nombre { get; set; }
         public string? Descripcion { get; set; }
@@ -13,5 +18,7 @@ namespace Clase7.EF.IslaDelTesoro.Data.Entidades
         public int? IdUbicacion { get; set; }
 
         public virtual Ubicacion? IdUbicacionNavigation { get; set; }
+
+        public virtual ICollection<CategoriaTesoro> IdCategoriaTesoros { get; set; }
     }
 }
