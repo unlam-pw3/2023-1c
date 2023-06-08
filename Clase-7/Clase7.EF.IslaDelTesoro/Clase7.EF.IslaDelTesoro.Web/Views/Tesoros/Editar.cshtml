@@ -30,6 +30,18 @@
             }
         }
     </select>
+
+     <div>
+        <ul>
+            @foreach (CategoriaTesoro catTesoro in ViewBag.CategoriaTesoros)
+            {
+                <li>
+                    <input id="@catTesoro.IdCategoriaTesoro" type="checkbox" name="IdCategoriaTesoros" value="@catTesoro.IdCategoriaTesoro" @(Model.IdCategoriaTesoros.Any(ct => ct.IdCategoriaTesoro == catTesoro.IdCategoriaTesoro) ? "checked" : "") />
+                    <label for="@catTesoro.IdCategoriaTesoro">@catTesoro.Nombre</label>
+                </li>
+            }
+        </ul>
+    </div>
     @if (Model.IdUbicacionNavigation != null)
     {
         <img src="@Model.IdUbicacionNavigation.ImagenUrl" style="height:50px;"/>

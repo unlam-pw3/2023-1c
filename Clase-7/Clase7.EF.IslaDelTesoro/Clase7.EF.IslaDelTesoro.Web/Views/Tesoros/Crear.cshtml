@@ -17,12 +17,31 @@
     <div>
         ImagenUrl: <input type="text" name="ImagenUrl" value="@Model.ImagenUrl" />
     </div>
-
-    <select name="IdUbicacion">
-        @foreach (Ubicacion ubicacion in ViewBag.Ubicaciones)
+    <div>
+        <select name="IdUbicacion">
+            @foreach (Ubicacion ubicacion in ViewBag.Ubicaciones)
+            {
+                <option value="@ubicacion.Id">@ubicacion.Nombre</option>
+            }
+        </select>
+    </div>
+    <div>
+        @* <select name="IdCategoriaTesoros" multiple>
+        @foreach (CategoriaTesoro catTesoro in ViewBag.CategoriaTesoros)
         {
-            <option value="@ubicacion.Id">@ubicacion.Nombre</option>
+        <option value="@catTesoro.IdCategoriaTesoro">@catTesoro.Nombre</option>
         }
-    </select>
+        </select>*@
+        <ul>
+            @foreach (CategoriaTesoro catTesoro in ViewBag.CategoriaTesoros)
+            {
+                <li>
+                    <input id="@catTesoro.IdCategoriaTesoro" type="checkbox" name="IdCategoriaTesoros" value="@catTesoro.IdCategoriaTesoro" />
+                    <label for="@catTesoro.IdCategoriaTesoro">@catTesoro.Nombre</label>
+                </li>
+            }
+        </ul>
+    </div>
+
     <input type="submit" value="Crear" />
 </form>
