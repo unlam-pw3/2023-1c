@@ -16,6 +16,7 @@ namespace Clase7.EF.IslaDelTesoro.Data.Entidades
         {
         }
 
+        public virtual DbSet<CategoriaTesoro> CategoriaTesoros { get; set; } = null!;
         public virtual DbSet<Tesoro> Tesoros { get; set; } = null!;
         public virtual DbSet<Ubicacion> Ubicacions { get; set; } = null!;
 
@@ -30,6 +31,15 @@ namespace Clase7.EF.IslaDelTesoro.Data.Entidades
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CategoriaTesoro>(entity =>
+            {
+                entity.HasKey(e => e.IdCategoriaTesoro);
+
+                entity.ToTable("CategoriaTesoro");
+
+                entity.Property(e => e.Nombre).HasMaxLength(100);
+            });
+
             modelBuilder.Entity<Tesoro>(entity =>
             {
                 entity.ToTable("Tesoro");
@@ -47,6 +57,33 @@ namespace Clase7.EF.IslaDelTesoro.Data.Entidades
                     .IsUnicode(false);
 
                 entity.Property(e => e.Valor).HasColumnType("decimal(10, 2)");
+
+                entity.HasOne(d => d.IdUbicacionNavigation)
+                    .WithMany(p => p.Tesoros)
+                    .HasForeignKey(d => d.IdUbicacion)
+                    .HasConstraintName("FK_Tesoro_Ubicacion");
+
+                entity.HasMany(d => d.IdCategoriaTesoros)
+                    .WithMany(p => p.IdTesoros)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "TesoroCategoriaTesoro",
+                        l => l.HasOne<CategoriaTesoro>().WithMany().HasForeignKey("IdCategoriaTesoro").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_TesoroCategoriaTesoro_CategoriaTesoro"),
+                        r => r.HasOne<Tesoro>().WithMany().HasForeignKey("IdTesoro").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_TesoroCategoriaTesoro_Tesoro"),
+                        j =>
+                        {
+                            j.HasKey("IdTesoro", "IdCategoriaTesoro");
+
+                            j.ToTable("TesoroCategoriaTesoro");
+                        });
+            });
+
+            modelBuilder.Entity<Ubicacion>(entity =>
+            {
+                entity.ToTable("Ubicacion");
+
+                entity.Property(e => e.ImagenUrl).HasMaxLength(1000);
+
+                entity.Property(e => e.Nombre).HasMaxLength(200);
             });
 
             modelBuilder.Entity<Ubicacion>(entity =>

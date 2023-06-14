@@ -1,4 +1,5 @@
-﻿@model Clase7.EF.IslaDelTesoro.Data.Entidades.Tesoro
+﻿@using Clase7.EF.IslaDelTesoro.Data.Entidades
+@model Clase7.EF.IslaDelTesoro.Data.Entidades.Tesoro
 @{
     ViewData["Title"] = "Editar";
 }
@@ -16,6 +17,34 @@
     <div>
         ImagenUrl: <input type="text" name="ImagenUrl" value="@Model.ImagenUrl" />
     </div>
+    <select name="IdUbicacion">
+        @foreach (Ubicacion ubicacion in ViewBag.Ubicaciones)
+        {
+            if (ubicacion.Id == Model.IdUbicacion)
+            {
+                <option selected="selected" value="@ubicacion.Id">@ubicacion.Nombre</option>
+            }
+            else
+            {
+                <option value="@ubicacion.Id">@ubicacion.Nombre</option>
+            }
+        }
+    </select>
 
+     <div>
+        <ul>
+            @foreach (CategoriaTesoro catTesoro in ViewBag.CategoriaTesoros)
+            {
+                <li>
+                    <input id="@catTesoro.IdCategoriaTesoro" type="checkbox" name="IdCategoriaTesoros" value="@catTesoro.IdCategoriaTesoro" @(Model.IdCategoriaTesoros.Any(ct => ct.IdCategoriaTesoro == catTesoro.IdCategoriaTesoro) ? "checked" : "") />
+                    <label for="@catTesoro.IdCategoriaTesoro">@catTesoro.Nombre</label>
+                </li>
+            }
+        </ul>
+    </div>
+    @if (Model.IdUbicacionNavigation != null)
+    {
+        <img src="@Model.IdUbicacionNavigation.ImagenUrl" style="height:50px;"/>
+    }
     <input type="submit" value="Guardar" />
 </form>

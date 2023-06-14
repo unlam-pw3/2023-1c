@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Clase7.EF.IslaDelTesoro.Data\Clase7.EF.IslaDelTesoro.Data.csproj" />
+    <ProjectReference Include="..\Clase7.EF.IslaDelTesoro.Logica\Clase7.EF.IslaDelTesoro.Logica.csproj" />
   </ItemGroup>
 
 </Project>
