@@ -19,10 +19,10 @@ namespace Clase8.Jugueteria.Api.Controllers
         }
         
         [HttpGet(Name = "GetJuguetes")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK,Type=typeof(List<Juguete>))]
         public IActionResult Get()
         {
-            var juguetes= _mapper.ProjectTo<Juguete>(_juguetesLogica.ObtenerJuguetes().AsQueryable());
+            var juguetes = _mapper.ProjectTo<Juguete>(_juguetesLogica.ObtenerJuguetes().AsQueryable()).ToList();
             return Ok(juguetes);
         }
 
