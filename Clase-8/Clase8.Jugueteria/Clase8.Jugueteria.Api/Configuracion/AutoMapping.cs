@@ -9,6 +9,7 @@ namespace Clase8.Jugueteria.Api.Configuracion
         public AutoMapping()
         {
             CreateMap<JugueteEntidad, Juguete>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.IdJuguete))
             .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src => src.Desc))
             .ForMember(dest => dest.EdadMinima, opt => opt.MapFrom(src => src.EdadMin));
         }

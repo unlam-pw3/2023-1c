@@ -27,11 +27,16 @@ namespace Clase8.Jugueteria.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "GetJuguete")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK,Type=typeof(Juguete))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get(int id)
         {
-            return Ok();
+            var juguete = _mapper.Map<Juguete>(_juguetesLogica.ObtenerJuguete(id));
+            if (juguete == null)
+            {
+                return NotFound();
+            }
+            return Ok(juguete);
         }
 
         [HttpPost(Name = "CreateJuguete")]
