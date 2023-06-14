@@ -79,6 +79,7 @@ namespace Clase8.Jugueteria.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Delete(int id)
         {
+            _juguetesLogica.EliminarJuguete(id);
             return Ok();
         }
     }
