@@ -62,6 +62,7 @@ namespace Clase8.Jugueteria.Logica
 
         public void CrearJuguete(JugueteEntidad juguete)
         {
+            juguete.IdJuguete = Items.Max(i => i.IdJuguete) + 1;
             //juguete.FechaCreacion = DateTime.Now; //2023-06-14 19:39:00 (Arg -03)
             juguete.FechaCreacion = DateTime.UtcNow; //2023-06-14 22:39:00 (UTC 0)
             Items.Add(juguete);

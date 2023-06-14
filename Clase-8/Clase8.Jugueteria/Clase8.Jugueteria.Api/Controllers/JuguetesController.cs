@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Clase8.Jugueteria.Api.Models;
 using Clase8.Jugueteria.Logica;
+using Clase8.Jugueteria.Logica.Entidades;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,6 +45,8 @@ namespace Clase8.Jugueteria.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Post([FromBody] Models.Juguete juguete)
         {
+            var jugueteEntidad = _mapper.Map<JugueteEntidad>(juguete);
+            _juguetesLogica.CrearJuguete(jugueteEntidad);
             return CreatedAtRoute("GetJuguete", new { id = juguete.Id }, juguete);
         }
 
