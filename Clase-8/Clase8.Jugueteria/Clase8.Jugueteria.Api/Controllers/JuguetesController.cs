@@ -18,9 +18,9 @@ namespace Clase8.Jugueteria.Api.Controllers
             _juguetesLogica = juguetesLogica;
             _mapper = mapper;
         }
-        
+
         [HttpGet(Name = "GetJuguetes")]
-        [ProducesResponseType(StatusCodes.Status200OK,Type=typeof(List<Juguete>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Juguete>))]
         public IActionResult Get()
         {
             var juguetes = _mapper.ProjectTo<Juguete>(_juguetesLogica.ObtenerJuguetes().AsQueryable()).ToList();
@@ -28,7 +28,7 @@ namespace Clase8.Jugueteria.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "GetJuguete")]
-        [ProducesResponseType(StatusCodes.Status200OK,Type=typeof(Juguete))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Juguete))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get(int id)
         {
@@ -52,10 +52,26 @@ namespace Clase8.Jugueteria.Api.Controllers
 
         [HttpPut("{id}", Name = "UpdateJuguete")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Put(int id, [FromBody] Models.Juguete juguete)
         {
-            return Ok();
+            try
+            {
+                juguete.Id = id;
+                var jugueteEntidad = _mapper.Map<JugueteEntidad>(juguete);
+                var resultado = _juguetesLogica.ActualizarJuguete(jugueteEntidad);
+
+                if (resultado == null)
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+            return Ok(juguete);
         }
 
         [HttpDelete("{id}", Name = "DeleteJuguete")]

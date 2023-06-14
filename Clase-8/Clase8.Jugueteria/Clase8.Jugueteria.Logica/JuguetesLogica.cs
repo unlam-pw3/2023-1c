@@ -8,7 +8,7 @@ namespace Clase8.Jugueteria.Logica
         List<JugueteEntidad> ObtenerJuguetes();
         JugueteEntidad ObtenerJuguete(int id);
         void CrearJuguete(JugueteEntidad juguete);
-        void ActualizarJuguete(JugueteEntidad juguete);
+        JugueteEntidad ActualizarJuguete(JugueteEntidad juguete);
         void EliminarJuguete(int id);
     }
 
@@ -68,17 +68,19 @@ namespace Clase8.Jugueteria.Logica
             Items.Add(juguete);
         }
 
-        public void ActualizarJuguete(JugueteEntidad juguete)
+        public JugueteEntidad ActualizarJuguete(JugueteEntidad juguete)
         {
             var item = Items.Find(x => x.IdJuguete == juguete.IdJuguete);
             if (item == null)
-                return;
+                return null;
             
             item.Nombre = juguete.Nombre;
             item.Desc = juguete.Desc;
             item.Precio = juguete.Precio;
             item.EdadMin = juguete.EdadMin;
             item.FechaModificacion = DateTime.UtcNow;
+
+            return item;
         }
 
         public void EliminarJuguete(int id)
