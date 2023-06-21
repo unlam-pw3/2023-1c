@@ -37,6 +37,13 @@ public class SucursalesServicio : ISucursalesServicio
 
     public List<Sucursal> ObtenerPorCadena(int idCadena)
     {
+        //listar usando linq
+        //return (from sucursal 
+        //        in _contexto.Sucursals 
+        //        where sucursal.IdCadena == idCadena 
+        //        select sucursal)
+        //        .ToList();
+        
         return _contexto.Sucursals
             .Where(s => s.IdCadena == idCadena)
             .ToList();
