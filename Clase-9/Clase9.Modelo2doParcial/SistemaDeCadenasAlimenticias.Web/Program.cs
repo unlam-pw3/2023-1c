@@ -1,7 +1,14 @@
+using SistemaDeCadenasAlimenticias.Data.EF;
+using SistemaDeCadenasAlimenticias.Servicios;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<Pw320231cModelo2doParcialContext>();
+builder.Services.AddScoped<ICadenasServicio, CadenasServicio>();
+builder.Services.AddScoped<ISucursalesServicio, SucursalesServicio>();
 
 var app = builder.Build();
 

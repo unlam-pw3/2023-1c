@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaDeCadenasAlimenticia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeCadenasAlimenticias.Data", "SistemaDeCadenasAlimenticias.Data\SistemaDeCadenasAlimenticias.Data.csproj", "{36F4893B-CB90-493B-802D-A53BF39ED235}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeCadenasAlimenticias.Servicios", "SistemaDeCadenasAlimenticias.Servicios\SistemaDeCadenasAlimenticias.Servicios.csproj", "{54AA5CED-8A35-4FA3-B242-4BA5D3C0AFCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{36F4893B-CB90-493B-802D-A53BF39ED235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36F4893B-CB90-493B-802D-A53BF39ED235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36F4893B-CB90-493B-802D-A53BF39ED235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54AA5CED-8A35-4FA3-B242-4BA5D3C0AFCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54AA5CED-8A35-4FA3-B242-4BA5D3C0AFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54AA5CED-8A35-4FA3-B242-4BA5D3C0AFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54AA5CED-8A35-4FA3-B242-4BA5D3C0AFCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
