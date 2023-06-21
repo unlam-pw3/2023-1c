@@ -5,6 +5,27 @@
     ViewBag.Title = "Sucursales";
 }
 
+<form action="/Sucursales/Listar" method="post">
+    <div>
+        Cadena:
+        <select name="idCadena">
+            <option value="">Todas</option>
+            @foreach (Cadena cadena in ViewBag.Cadenas)
+            {
+                if (ViewBag.IdCadenaSeleccionada != null && ViewBag.IdCadenaSeleccionada == cadena.Id)
+                {
+                    <option selected="selected" value="@cadena.Id">@cadena.RazonSocial</option>
+                }
+                else
+                {
+                    <option value="@cadena.Id">@cadena.RazonSocial</option>
+                }
+            }
+        </select>
+    </div>
+    <input type="submit" value="Filtrar" />
+    
+</form>
 <table>
     <thead>
         <tr>

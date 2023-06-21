@@ -12,6 +12,7 @@ public interface ISucursalesServicio
 {
     void Agregar(Sucursal sucursal);
     List<Sucursal> Listar();
+    List<Sucursal> ObtenerPorCadena(int idCadena);
 }
 public class SucursalesServicio : ISucursalesServicio
 {
@@ -34,12 +35,11 @@ public class SucursalesServicio : ISucursalesServicio
             .ToList();
     }
 
-    //public List<Sucursal> ObtenerPorCadena(int idCadena)
-    //{
-    //    using (var db = new Pw320231cModelo2doParcialContext())
-    //    {
-    //        return db.Sucursals.Where(s => s.IdCadena == idCadena).ToList();
-    //    }
-    //}
+    public List<Sucursal> ObtenerPorCadena(int idCadena)
+    {
+        return _contexto.Sucursals
+            .Where(s => s.IdCadena == idCadena)
+            .ToList();
+    }
 }
 

@@ -31,8 +31,14 @@ namespace SistemaDeCadenasAlimenticias.Web.Controllers
         }
 
         //Listar
-        public IActionResult Listar()
+        public IActionResult Listar(int? idCadena)
         {
+            ViewBag.Cadenas = _cadenasServicio.Listar();
+            ViewBag.IdCadenaSeleccionada = idCadena;
+            if (idCadena.HasValue)
+            {
+                return View(_sucursalesServicio.ObtenerPorCadena(idCadena.Value));
+            }
             return View(_sucursalesServicio.Listar());
         }
     }
