@@ -22,7 +22,9 @@ public class CadenasServicio : ICadenasServicio
 
     public List<Cadena> Listar()
     {
-        return _contexto.Cadenas.ToList();
+        return _contexto.Cadenas
+            .OrderBy(c=> c.RazonSocial)
+            .ToList();
     }
 }
 
