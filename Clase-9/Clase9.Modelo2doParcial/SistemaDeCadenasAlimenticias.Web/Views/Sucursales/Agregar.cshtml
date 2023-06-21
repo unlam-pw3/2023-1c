@@ -1,0 +1,29 @@
+﻿@using SistemaDeCadenasAlimenticias.Data.EF
+@model Sucursal
+
+@{
+    ViewBag.Title = "Agregar Sucursal";
+}
+
+<form action="/Sucursales/Agregar" method="post">
+
+    <div>
+        Cadena: 
+        <select name="IdCadena">
+            @foreach (Cadena cadena in ViewBag.Cadenas)
+            {
+                <option value="@cadena.Id">@cadena.RazonSocial</option>
+            }
+        </select>
+    </div>
+    <div>
+        Direccion:
+        <input type="text" name="Direccion" value="@Model.Direccion" />
+    </div>
+    <div>
+        Ciudad:
+        <input type="text" name="Ciudad" value="@Model.Ciudad" />
+    </div>
+
+    <input type="submit" value="Grabar Nueva Sucursal" />
+</form>
