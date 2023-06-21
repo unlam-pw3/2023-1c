@@ -1,0 +1,47 @@
+﻿@using SistemaDeCadenasAlimenticias.Data.EF
+@model List<Sucursal>
+
+@{
+    ViewBag.Title = "Sucursales";
+}
+
+<form action="/Sucursales/Listar" method="post">
+    <div>
+        Cadena:
+        <select name="idCadena">
+            <option value="">Todas</option>
+            @foreach (Cadena cadena in ViewBag.Cadenas)
+            {
+                if (ViewBag.IdCadenaSeleccionada != null && ViewBag.IdCadenaSeleccionada == cadena.Id)
+                {
+                    <option selected="selected" value="@cadena.Id">@cadena.RazonSocial</option>
+                }
+                else
+                {
+                    <option value="@cadena.Id">@cadena.RazonSocial</option>
+                }
+            }
+        </select>
+    </div>
+    <input type="submit" value="Filtrar" />
+    
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Cadena</th>
+            <th>Direccion</th>
+            <th>Ciudad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Sucursal sucursal in Model)
+        {
+            <tr>
+                <td>@sucursal.IdCadenaNavigation.RazonSocial</td>
+                <td>@sucursal.Direccion</td>
+                <td>@sucursal.Ciudad</td>
+            </tr>
+        }
+    </tbody>
+</table>
