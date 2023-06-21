@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "Clase9.Modelo2doParcial.Web": {
+    "SistemaDeCadenasAlimenticias.Web": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Clase9.Modelo2doParcial.Web.Controllers
+namespace SistemaDeCadenasAlimenticias.Web.Controllers
 {
     public class HomeController : Controller
     {

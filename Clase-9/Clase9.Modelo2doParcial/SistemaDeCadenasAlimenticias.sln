@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clase9.Modelo2doParcial.Web", "Clase9.Modelo2doParcial.Web\Clase9.Modelo2doParcial.Web.csproj", "{AECBAF99-E5DF-47CE-A691-8B69BB6E9293}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeCadenasAlimenticias.Web", "SistemaDeCadenasAlimenticias.Web\SistemaDeCadenasAlimenticias.Web.csproj", "{AECBAF99-E5DF-47CE-A691-8B69BB6E9293}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
