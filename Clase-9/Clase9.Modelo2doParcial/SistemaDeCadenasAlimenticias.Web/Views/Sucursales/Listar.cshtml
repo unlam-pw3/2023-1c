@@ -1,0 +1,26 @@
+﻿@using SistemaDeCadenasAlimenticias.Data.EF
+@model List<Sucursal>
+
+@{
+    ViewBag.Title = "Sucursales";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Cadena</th>
+            <th>Direccion</th>
+            <th>Ciudad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Sucursal sucursal in Model)
+        {
+            <tr>
+                <td>@sucursal.IdCadenaNavigation.RazonSocial</td>
+                <td>@sucursal.Direccion</td>
+                <td>@sucursal.Ciudad</td>
+            </tr>
+        }
+    </tbody>
+</table>

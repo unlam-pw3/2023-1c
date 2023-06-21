@@ -27,7 +27,13 @@ namespace SistemaDeCadenasAlimenticias.Web.Controllers
         public IActionResult Agregar(Sucursal sucursal)
         {
             _sucursalesServicio.Agregar(sucursal);
-            return View(sucursal);
+            return RedirectToAction("Listar");
+        }
+
+        //Listar
+        public IActionResult Listar()
+        {
+            return View(_sucursalesServicio.Listar());
         }
     }
 }

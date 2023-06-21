@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SistemaDeCadenasAlimenticias.Data.EF;
 
 namespace SistemaDeCadenasAlimenticias.Servicios;
@@ -10,6 +11,7 @@ namespace SistemaDeCadenasAlimenticias.Servicios;
 public interface ISucursalesServicio
 {
     void Agregar(Sucursal sucursal);
+    List<Sucursal> Listar();
 }
 public class SucursalesServicio : ISucursalesServicio
 {
@@ -25,10 +27,12 @@ public class SucursalesServicio : ISucursalesServicio
         _contexto.SaveChanges();
     }
 
-    //public List<Sucursal> Listar()
-    //{
-    //    return _contexto.Sucursals.ToList();
-    //}
+    public List<Sucursal> Listar()
+    {
+        return _contexto.Sucursals
+            .Include(s => s.IdCadenaNavigation)
+            .ToList();
+    }
 
     //public List<Sucursal> ObtenerPorCadena(int idCadena)
     //{
