@@ -15,3 +15,17 @@
         <p>$@item.Precio - @item.Descripcion. (@item.EdadMinima)</p>
     </div>
 }
+
+
+<form asp-action="BuscarbyId">
+    <label>Juguete a buscar</label>
+    <input name="id"/>
+    <input type="submit" value="Buscar"/>
+</form>
+
+@if (Model.Juguete!=null){
+    <div>
+        <h3>@Model.Juguete.Nombre</h3>
+        <p>$@Model.Juguete.Precio - @Model.Juguete.Descripcion. (@Model.Juguete.EdadMinima)</p>
+    </div>
+}
