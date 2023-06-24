@@ -11,7 +11,7 @@ public partial class Sucursal
 
     public string Ciudad { get; set; } = null!;
 
-    public int IdCadena { get; set; }
+    public int? IdCadena { get; set; }
 
     public virtual Cadena IdCadenaNavigation { get; set; } = null!;
 }
