@@ -8,7 +8,7 @@ namespace SistemaDeCadenasAlimenticias.API.Models
         [JsonIgnore]
         public int IdCadena { get; set; }
 
-            public string RazonSocialCadena { get; set; } = null!;
+        public string RazonSocialCadena { get; set; } = null!;
 
             //public virtual ICollection<Sucursal> Sucursals { get; set; } = new List<Sucursal>();
   

@@ -2,9 +2,9 @@
 {
     public class CadenaApiModel
     {
-        public int Id { get; set; }
+        public int IdCadena { get; set; }
 
-        public string RazonSocial { get; set; } = null!;
+        public string RazonSocialCadena { get; set; } = null!;
 
     }
 

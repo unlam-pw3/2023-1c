@@ -13,7 +13,7 @@ builder.Services.AddScoped<ISucursalesServicio, SucursalesServicio>();
 //Configuracion APICliente
 builder.Services.AddScoped<ICadenaApiCliente, CadenaApiCliente>();
 builder.Services.AddHttpClient("CadenasAlimenticiasApiCliente",cliente=>
-cliente.BaseAddress=new Uri("https://localhost:7116"));
+cliente.BaseAddress=new Uri("http://localhost:5016"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

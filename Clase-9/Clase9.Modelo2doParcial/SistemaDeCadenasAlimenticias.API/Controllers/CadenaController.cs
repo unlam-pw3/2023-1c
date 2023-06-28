@@ -30,17 +30,18 @@ namespace SistemaDeCadenasAlimenticias.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<CadenaModelApi>))]
         public IActionResult Get()
         {
-            var listaDeCadenas=_cadenasServicio.Listar();
-            //var listaDeCadenas = _mapper.ProjectTo<CadenaModelApi>(_cadenasServicio.Listar().AsQueryable()).ToList();
+            //var listaDeCadenas=_cadenasServicio.Listar();
+            var listaDeCadenas = _mapper.ProjectTo<CadenaModelApi>(_cadenasServicio.Listar().AsQueryable()).ToList();
 
             return Ok(listaDeCadenas);
         }
         [HttpGet("{id}",Name ="GetCadena")]
         [ProducesResponseType(StatusCodes.Status200OK,Type =typeof(CadenaModelApi))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int id) {
-            var  result = _cadenasServicio.ObtenerCadena(id);
-            // var result = _mapper.Map<CadenaModelApi>( _cadenasServicio.ObtenerCadena(id));
+        public IActionResult Get(int id)
+        {
+            //var result = _cadenasServicio.ObtenerCadena(id);
+            var result = _mapper.Map<CadenaModelApi>( _cadenasServicio.ObtenerCadena(id));
             if (result != null)
             {
                 return Ok(result);
