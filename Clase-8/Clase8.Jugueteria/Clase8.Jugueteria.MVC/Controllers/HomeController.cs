@@ -23,6 +23,16 @@ namespace Clase8.Jugueteria.MVC.Controllers
             return View(vm);
         }
 
+
+        public async Task<IActionResult> BuscarbyId(int id)
+        {
+            HomeIndexViewModel vm = new HomeIndexViewModel();
+            vm.Juguetes = await _juguetesApiClient.ObtenerJuguetes();
+            vm.Juguete = await _juguetesApiClient.ObtenerJuguete(id);
+            return View("Index",vm);
+        }
+
+
         public IActionResult Privacy()
         {
             return View();

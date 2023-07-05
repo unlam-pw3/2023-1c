@@ -1,3 +1,4 @@
+
 -- Insert 1
 INSERT INTO Tesoro (Nombre, Descripcion, ImagenUrl, Ubicacion, Valor)
 VALUES ('Tesoro de Oro', 'Un cofre lleno de monedas de oro', 'https://ejemplo.com/imagen1.jpg', NULL, 5000.00);

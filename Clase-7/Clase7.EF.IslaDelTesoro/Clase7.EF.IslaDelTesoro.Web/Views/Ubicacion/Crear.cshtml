@@ -1,0 +1,18 @@
+﻿@model Clase7.EF.IslaDelTesoro.Data.Entidades.Ubicacion 
+@{
+    ViewData["Title"] = "Agregar Ubicacion";
+}
+
+<h1>Ingresar Nuevas Ubicaciones</h1>
+
+<form action="/Ubicacion/Crear" method="post">
+
+    <div>
+        Nombre: <input type="text" name="Nombre" value="@Model.Nombre" />
+    </div>
+    <div>
+        
+    </div>
+
+    <input type="submit" value="Crear" />
+</form>

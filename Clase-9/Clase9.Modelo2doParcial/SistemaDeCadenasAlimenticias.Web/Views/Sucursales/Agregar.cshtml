@@ -18,11 +18,13 @@
     </div>
     <div>
         Direccion:
-        <input type="text" name="Direccion" value="@Model.Direccion" />
+        <input type="text" asp-for="Direccion" value="@Model.Direccion" />
+        <span asp-validation-for="Direccion" class="text-danger"></span>
     </div>
     <div>
         Ciudad:
         <input type="text" name="Ciudad" value="@Model.Ciudad" />
+        <span asp-validation-for="Ciudad" class="text-danger"></span>
     </div>
 
     <input type="submit" value="Grabar Nueva Sucursal" />

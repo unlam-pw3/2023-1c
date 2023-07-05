@@ -3,6 +3,7 @@
 public interface IJuguetesApiClient
 {
     Task<List<JugueteApiModel>> ObtenerJuguetes();
+    Task<JugueteApiModel> ObtenerJuguete(int id);
 }
 public class JuguetesApiClient : IJuguetesApiClient
 {
@@ -20,6 +21,15 @@ public class JuguetesApiClient : IJuguetesApiClient
         response.EnsureSuccessStatusCode();
 
         var data = await response.Content.ReadFromJsonAsync<List<JugueteApiModel>>();
+        return data;
+    }
+    public async Task<JugueteApiModel> ObtenerJuguete(int id)
+    {
+        var client = _httpClientFactory.CreateClient("JuguetesApiClient");
+        var response = await client.GetAsync($"/api/juguetes/{id}");
+        response.EnsureSuccessStatusCode();
+
+        var data = await response.Content.ReadFromJsonAsync<JugueteApiModel>();
         return data;
     }
 

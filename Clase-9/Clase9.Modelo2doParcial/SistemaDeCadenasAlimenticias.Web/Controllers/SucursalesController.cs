@@ -26,8 +26,15 @@ namespace SistemaDeCadenasAlimenticias.Web.Controllers
         [HttpPost]
         public IActionResult Agregar(Sucursal sucursal)
         {
-            _sucursalesServicio.Agregar(sucursal);
-            return RedirectToAction("Listar");
+
+
+            if (ModelState.IsValid)
+            {
+                _sucursalesServicio.Agregar(sucursal);
+                return RedirectToAction("Listar");
+            }
+            ViewBag.Cadenas = _cadenasServicio.Listar();
+            return View(sucursal);
         }
 
         //Listar

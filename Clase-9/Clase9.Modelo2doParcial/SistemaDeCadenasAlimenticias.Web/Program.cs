@@ -1,5 +1,6 @@
 using SistemaDeCadenasAlimenticias.Data.EF;
 using SistemaDeCadenasAlimenticias.Servicios;
+using SistemaDeCadenasAlimenticias.Web.CadenaApiCliente;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<Pw320231cModelo2doParcialContext>();
 builder.Services.AddScoped<ICadenasServicio, CadenasServicio>();
 builder.Services.AddScoped<ISucursalesServicio, SucursalesServicio>();
-
+//Configuracion APICliente
+builder.Services.AddScoped<ICadenaApiCliente, CadenaApiCliente>();
+builder.Services.AddHttpClient("CadenasAlimenticiasApiCliente",cliente=>
+cliente.BaseAddress=new Uri("http://localhost:5016"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
